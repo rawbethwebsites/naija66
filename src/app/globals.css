@@ -1,0 +1,94 @@
+@import url("https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --naija-green: #0a6847;
+  --naija-green-light: #11a87a;
+  --naija-gold: #f4a900;
+  --naija-gold-light: #ffd166;
+  --naija-coral: #e85d4a;
+  --naija-indigo: #1b1464;
+  --naija-cream: #fff8f0;
+  --naija-charcoal: #1a1a2e;
+}
+
+@layer base {
+  html {
+    font-family: "Plus Jakarta Sans", system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    background: var(--naija-indigo);
+    color: var(--naija-cream);
+    overflow-x: hidden;
+  }
+}
+
+@layer components {
+  .text-display {
+    font-family: "Bricolage Grotesque", system-ui, sans-serif;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center rounded-2xl px-8 py-4
+           font-display font-semibold text-lg
+           transition-transform duration-200 active:scale-95;
+    background: var(--naija-gold);
+    color: var(--naija-charcoal);
+  }
+
+  .btn-primary:hover {
+    background: var(--naija-gold-light);
+  }
+
+  .btn-coral {
+    @apply inline-flex items-center justify-center rounded-2xl px-8 py-4
+           font-display font-semibold text-lg
+           transition-transform duration-200 active:scale-95;
+    background: var(--naija-coral);
+    color: var(--naija-cream);
+  }
+
+  .card-glass {
+    background: rgba(255, 248, 240, 0.06);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 248, 240, 0.1);
+    border-radius: 1.25rem;
+  }
+
+  .glow-green {
+    box-shadow: 0 0 24px rgba(10, 104, 71, 0.5),
+                0 0 48px rgba(10, 104, 71, 0.2);
+  }
+
+  .glow-gold {
+    box-shadow: 0 0 24px rgba(244, 169, 0, 0.5),
+                0 0 48px rgba(244, 169, 0, 0.2);
+  }
+
+  .timer-ring {
+    stroke-dasharray: 283;
+    transition: stroke-dashoffset 1s linear;
+  }
+}
+
+/* Reduce motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Tap highlight removal for mobile */
+* {
+  -webkit-tap-highlight-color: transparent;
+}

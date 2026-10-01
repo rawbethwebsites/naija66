@@ -1,0 +1,1364 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Naija 66</title>
+<meta name="theme-color" content="#064E3B">
+<style>
+@import url("https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap");
+
+:root {
+  --bg: #064E3B;
+  --bg-deep: #032E22;
+  --fg: #FFF8F0;
+  --green: #0A6847;
+  --green-light: #11A87A;
+  --green-bright: #16C098;
+  --gold: #F4A900;
+  --gold-light: #FFD166;
+  --coral: #E85D4A;
+  --indigo: #1B1464;
+  --cream: #FFF8F0;
+  --charcoal: #1A1A2E;
+  --glass-bg: rgba(255,255,255,0.08);
+  --glass-border: rgba(255,255,255,0.12);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #064E3B; --fg: #FFF8F0;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #064E3B; --fg: #FFF8F0;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+body {
+  background: var(--bg);
+  background-image:
+    radial-gradient(ellipse at 50% 0%, rgba(10,104,71,.6) 0%, transparent 60%),
+    radial-gradient(ellipse at 80% 100%, rgba(244,169,0,.08) 0%, transparent 50%);
+  color: var(--fg);
+  font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+  min-height: 100dvh;
+  padding-inline: 16px;
+}
+
+.display { font-family: 'Bricolage Grotesque', system-ui, sans-serif; }
+
+button { cursor: pointer; border: none; background: none; font: inherit; color: inherit; }
+input { font: inherit; }
+
+.btn-gold {
+  display: inline-flex; align-items: center; justify-content: center;
+  border-radius: 16px; padding: 16px 32px;
+  font-family: 'Bricolage Grotesque', system-ui, sans-serif;
+  font-weight: 600; font-size: 18px;
+  background: var(--gold); color: var(--charcoal);
+  transition: transform .15s, background .15s;
+}
+.btn-gold:hover { background: var(--gold-light); }
+.btn-gold:active { transform: scale(.95); }
+
+.btn-coral {
+  display: inline-flex; align-items: center; justify-content: center;
+  border-radius: 16px; padding: 16px 32px;
+  font-family: 'Bricolage Grotesque', system-ui, sans-serif;
+  font-weight: 600; font-size: 18px;
+  background: var(--coral); color: var(--cream);
+  transition: transform .15s;
+}
+.btn-coral:active { transform: scale(.95); }
+
+.btn-outline {
+  display: inline-flex; align-items: center; justify-content: center;
+  border-radius: 16px; padding: 14px 24px;
+  font-weight: 600; font-size: 15px;
+  border: 2px solid var(--glass-border);
+  background: var(--glass-bg);
+  transition: all .15s;
+}
+.btn-outline:hover { border-color: rgba(255,248,240,.25); background: rgba(255,248,240,.1); }
+.btn-outline:active { transform: scale(.95); }
+
+.glass {
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+  border-radius: 20px;
+}
+
+.back-btn {
+  color: rgba(255,248,240,.4); font-size: 14px;
+  align-self: flex-start; margin-bottom: 24px; padding: 4px 0;
+}
+
+.screen {
+  min-height: 100dvh; display: flex; flex-direction: column;
+  padding-block: 24px; max-width: 480px; margin-inline: auto;
+}
+
+.pattern-dots {
+  position: fixed; inset: 0; pointer-events: none; z-index: 0; opacity: .03;
+  background-image: radial-gradient(circle, var(--cream) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+@keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes pulseGlow { 0%,100% { filter: drop-shadow(0 0 8px rgba(244,169,0,.3)); } 50% { filter: drop-shadow(0 0 24px rgba(244,169,0,.6)); } }
+@keyframes countPulse { 0% { transform: scale(1); } 50% { transform: scale(1.15); } 100% { transform: scale(1); } }
+@keyframes shake { 0%,100% { transform: translateX(0); } 20% { transform: translateX(-6px); } 40% { transform: translateX(6px); } 60% { transform: translateX(-4px); } 80% { transform: translateX(4px); } }
+@keyframes correctFlash { 0% { box-shadow: 0 0 0 0 rgba(17,168,122,.6); } 100% { box-shadow: 0 0 0 16px rgba(17,168,122,0); } }
+@keyframes streakPop { 0% { transform: scale(0) rotate(-10deg); opacity: 0; } 60% { transform: scale(1.2) rotate(3deg); } 100% { transform: scale(1) rotate(0deg); opacity: 1; } }
+@keyframes float { 0%,100% { transform: translateY(0px); } 50% { transform: translateY(-8px); } }
+@keyframes spinSlow { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
+.fade-up { animation: fadeUp .5s ease-out both; }
+.fade-up-d1 { animation-delay: .1s; }
+.fade-up-d2 { animation-delay: .2s; }
+.fade-up-d3 { animation-delay: .3s; }
+.fade-up-d4 { animation-delay: .4s; }
+.fade-up-d5 { animation-delay: .5s; }
+
+.timer-ring { stroke-dasharray: 283; transition: stroke-dashoffset 1s linear; }
+
+.state-grid::-webkit-scrollbar { width: 4px; }
+.state-grid::-webkit-scrollbar-track { background: transparent; }
+.state-grid::-webkit-scrollbar-thumb { background: rgba(255,248,240,.15); border-radius: 2px; }
+
+.opt-btn {
+  width: 100%; text-align: left; padding: 16px 20px;
+  border-radius: 16px; font-size: 16px; font-weight: 500;
+  border: 2px solid var(--glass-border);
+  background: var(--glass-bg);
+  transition: all .15s;
+}
+.opt-btn:hover { border-color: rgba(255,248,240,.25); background: rgba(255,248,240,.1); }
+.opt-btn:active { transform: scale(.97); }
+.opt-btn.correct { border-color: var(--green-light); background: rgba(17,168,122,.2); animation: correctFlash .4s ease-out; }
+.opt-btn.wrong { border-color: var(--coral); background: rgba(232,93,74,.15); animation: shake .4s ease-out; }
+.opt-btn[disabled] { pointer-events: none; opacity: .7; }
+
+.streak-badge {
+  position: fixed; top: 80px; left: 50%; transform: translateX(-50%);
+  z-index: 50; padding: 8px 20px; border-radius: 24px;
+  background: var(--gold); color: var(--charcoal);
+  font-family: 'Bricolage Grotesque', system-ui, sans-serif;
+  font-weight: 700; font-size: 16px;
+  animation: streakPop .4s ease-out both;
+  pointer-events: none;
+}
+
+.pride-card {
+  width: 100%; max-width: 360px; aspect-ratio: 1;
+  border-radius: 24px; overflow: hidden; position: relative;
+  background: linear-gradient(145deg, var(--bg-deep) 0%, #053D2C 50%, #0A6847 100%);
+}
+.pride-card::before {
+  content: ''; position: absolute; inset: 0; opacity: .1;
+  background: repeating-linear-gradient(45deg, transparent, transparent 20px, rgba(255,248,240,.05) 20px, rgba(255,248,240,.05) 21px);
+}
+
+.zone-path { cursor: pointer; transition: all .2s; }
+.zone-path:hover { filter: brightness(1.3); }
+.zone-path.active { filter: brightness(1.5) drop-shadow(0 0 12px rgba(17,168,122,.5)); }
+.zone-path.completed { filter: brightness(1.2) saturate(1.3); }
+.zone-path.dimmed { opacity: .35; cursor: default; }
+
+.profile-badge {
+  display: flex; align-items: center; gap: 10px;
+  padding: 8px 14px; border-radius: 999px;
+  background: rgba(255,248,240,.06);
+  border: 1px solid rgba(255,248,240,.08);
+}
+
+.tone-badge {
+  display: inline-block; padding: 3px 10px; border-radius: 999px;
+  font-size: 11px; font-weight: 600; letter-spacing: .5px;
+}
+
+/* Game card tiles */
+.game-tile {
+  border-radius: 20px; padding: 24px; text-align: left;
+  transition: transform .15s;
+  border: 2px solid var(--glass-border);
+  background: var(--glass-bg);
+}
+.game-tile:active { transform: scale(.96); }
+
+/* True/False buttons */
+.tf-btn {
+  flex: 1; padding: 24px; border-radius: 20px;
+  font-size: 20px; font-weight: 700;
+  font-family: 'Bricolage Grotesque', system-ui, sans-serif;
+  transition: all .15s;
+}
+.tf-btn:active { transform: scale(.95); }
+.tf-true { background: rgba(17,168,122,.15); border: 2px solid rgba(17,168,122,.3); color: var(--green-light); }
+.tf-false { background: rgba(232,93,74,.15); border: 2px solid rgba(232,93,74,.3); color: var(--coral); }
+.tf-btn.picked-right { background: rgba(17,168,122,.4); border-color: var(--green-light); }
+.tf-btn.picked-wrong { background: rgba(232,93,74,.4); border-color: var(--coral); animation: shake .4s ease-out; }
+
+/* Quote card */
+.quote-card {
+  border-radius: 20px; padding: 32px 24px;
+  background: rgba(255,255,255,.04);
+  border-left: 4px solid var(--gold);
+  font-size: 18px; line-height: 1.6;
+  font-style: italic;
+  color: rgba(255,248,240,.9);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    transition-duration: .01ms !important;
+  }
+}
+</style>
+
+<div class="pattern-dots"></div>
+<div id="app"></div>
+
+<script>
+// ============================================================
+// BLOBATAR — deterministic geometric avatars (blobatar 2.7.0)
+// ============================================================
+function L({l:q,c:J,h:Q}){let Y=Q*Math.PI/180,Z=J*Math.cos(Y),X=J*Math.sin(Y),$=q+0.3963377774*Z+0.2158037573*X,V=q-0.1055613458*Z-0.0638541728*X,G=q-0.0894841775*Z-1.291485548*X,K=$*$*$,D=V*V*V,W=G*G*G;return[4.0767416621*K-3.3077115913*D+0.2309699292*W,-1.2684380046*K+2.6097574011*D-0.3413193965*W,-0.0041960863*K-0.7034186147*D+1.707614701*W]}var v=(q)=>q.every((J)=>J>=-0.0001&&J<=1.0001);function g(q){let J=L(q);if(!v(J)){let Q=0,Y=q.c;for(let Z=0;Z<12;Z++){let X=(Q+Y)/2;if(v(L({...q,c:X})))Q=X;else Y=X}J=L({...q,c:Q})}return J.map((Q)=>Math.min(1,Math.max(0,Q)))}function k(q){let[J,Q,Y]=g(q);return 0.2126*J+0.7152*Q+0.0722*Y}function F(q,J){let Q=k(q),Y=k(J);return(Math.max(Q,Y)+0.05)/(Math.min(Q,Y)+0.05)}function u(q,J,Q){if(F(q,J)>=Q)return q;let Y=q.l>=J.l?1:-1;for(let $ of[Y,-Y]){let V={...q};for(let G=0;G<60;G++){if(V.l=Math.min(1,Math.max(0,V.l+$*0.02)),F(V,J)>=Q)return V;if(V.l===0||V.l===1)break}}let Z={...q,l:0,c:0},X={...q,l:1,c:0};return F(Z,J)>=F(X,J)?Z:X}function Uq(q){return"#"+g(q).map((J)=>{let Q=J<=0.0031308?12.92*J:1.055*Math.pow(J,0.4166666666666667)-0.055;return Math.round(Q*255).toString(16).padStart(2,"0")}).join("")}var f=[[0.2,{l:0.86,c:0.085}],[0.36,{l:0.9,c:0.028}],[0.62,{l:0.73,c:0.135}],[0.8,{l:0.62,c:0.165}],[0.93,{l:0.87,c:0.16}],[1,{l:0.34,c:0.035}]],jq=(q)=>f.find(([J])=>q<J)?.[1]??f[0][1],zq={l:0.145,c:0,h:0},Nq=1.5,Bq=(q,J)=>{let Q=jq(J),Y=u({l:Q.l,c:Q.c,h:q},zq,Nq);return{bg:{l:0.965,c:0.01,h:q},head:Y,eye:Y.l>=0.5?{l:0.17,c:0.02,h:q}:{l:0.97,c:0.012,h:q}}},Cq=[["head","bg",1.25],["eye","head",4.5]];function Aq(q,J=!0,Q=0){let Y=Bq(q,Q);if(J)for(let[Z,X,$]of Cq)Y[Z]=u(Y[Z],Y[X],$);return Y}function x(q,J=!0,Q=0){let Y=Aq(q,J,Q),Z={};for(let X in Y)Z[X]=Uq(Y[X]);return Z}var I=(q)=>{let J=Math.round(q*100)/100;return Object.is(J,-0)?"0":String(J)};function A({cx:q,cy:J,rx:Q,ry:Y,n:Z=4,rot:X=0}){let $=Math.min(1,(8*Math.pow(2,-1/Z)-4)/3),V=Q,G=Y,K=V*$,D=G*$,W=[[V,0],[V,D],[K,G],[0,G],[-K,G],[-V,D],[-V,0],[-V,-D],[-K,-G],[0,-G],[K,-G],[V,-D],[V,0]],j=X*Math.PI/180,M=Math.cos(j),z=Math.sin(j),U=(P)=>{let[B,C]=W[P];return`${I(q+B*M-C*z)} ${I(J+B*z+C*M)}`},N=`M${U(0)}`;for(let P=1;P<13;P+=3)N+=`C${U(P)} ${U(P+1)} ${U(P+2)}`;return N+"Z"}function m(q,J,Q,Y,Z,X=0){let $=Z.length,V=X*Math.PI/180,G=Z.map((W,j)=>{let M=V+2*Math.PI*j/$;return[q+Q*W*Math.cos(M),J+Y*W*Math.sin(M)]}),K=(W)=>G[(W%$+$)%$],D=`M${I(K(0)[0])} ${I(K(0)[1])}`;for(let W=0;W<$;W++){let[j,M]=K(W-1),[z,U]=K(W),[N,P]=K(W+1),[B,C]=K(W+2);D+=`C${I(z+(N-j)/6)} ${I(U+(P-M)/6)} ${I(N-(B-z)/6)} ${I(P-(C-U)/6)} ${I(N)} ${I(P)}`}return D+"Z"}function c({cx:q,cy:J,rx:Q,ry:Y,sides:Z,round:X=0.3,rot:$=0}){let V=X>0?X<1?X/2:0.5:0,G=$*Math.PI/180-Math.PI/2,K=Array.from({length:Z},(M,z)=>{let U=G+2*Math.PI*z/Z;return[q+Q*Math.cos(U),J+Y*Math.sin(U)]}),D=(M)=>K[(M%Z+Z)%Z],W=(M,z)=>{let[U,N]=D(M),[P,B]=D(z);return`${I(U+(P-U)*V)} ${I(N+(B-N)*V)}`},j=`M${W(0,-1)}`;for(let M=0;M<Z;M++){let[z,U]=D(M);if(j+=`Q${I(z)} ${I(U)} ${W(M,M+1)}`,V<0.5)j+=`L${W(M+1,M)}`}return j+"Z"}function y(q,J,Q,Y){let Z=I(q-Q),X=I(q+Q);return`M${Z} ${I(J-Y)}H${X}V${I(J+Y)}H${Z}Z`}function h(q,J,Q,Y,Z){let X=Math.max(1.05,Z),$=Q*Math.sqrt(1-1/(X*X)),V=J-Y/X,G=J-X*Y,K=$*0.14,D=V+0.86*(G-V);return`M${I(q-$)} ${I(V)}L${I(q-K)} ${I(D)}Q${I(q)} ${I(G)} ${I(q+K)} ${I(D)}L${I(q+$)} ${I(V)}Z`}function _(q,J){for(let Q=0;Q<J.length;Q++)q=Math.imul(q^J[Q],3432918353),q=q<<13|q>>>19;return q}function Fq(q){return q=Math.imul(q^q>>>16,2246822507),q=Math.imul(q^q>>>13,3266489909),(q^q>>>16)>>>0}var d=new TextEncoder;function Lq(q){return q.normalize("NFC").trim().toLowerCase()}function l(q,J=!0){let Q=J?Lq(q):q;return _(1779033703^Q.length,d.encode(Q))}function R(q,J){return Fq(_(_(q,Uint8Array.of(255)),d.encode(J)))/4294967296}function p(q,J=!0,Q){let Y=l(q,J),Z=(X)=>{let $=Q?.[X],V=Array.isArray($)?$[Math.floor(R(Y,X)*$.length)]:$;return V===void 0?R(Y,X):V>0?V<1?V:0.999999:0};return Z.num=(X,$,V)=>$+Z(X)*(V-$),Z.int=(X,$,V)=>$+Math.floor(Z(X)*(V-$+1)),Z.pick=(X,$)=>$[Math.floor(Z(X)*$.length)],Z.bool=(X,$=0.5)=>Z(X)<$,Z.jitter=(X,$)=>(Z(X)*2-1)*$,Z}function n(q,J,Q){let Y=J.expression;if(Q||!Y)return{l:q,wrap:""};return Y.bake(q,Y.p)}var b=(q,J)=>J?.tint?J.tint(q,J.p):q,_q=(q,J)=>J?`<g transform="${J}">${q}</g>`:q,Rq=(q)=>q.replace(/[&<>]/g,(J)=>J==="&"?"&amp;":J==="<"?"&lt;":"&gt;");function i(q,J){let Q=p(q,J.normalize??!0,J.traits);return{t:Q,palette:{...x(J.hue??Q.num("hue",0,360),J.contrast??!0,J.tone??Q("tone")),...J.palette}}}var Tq=(q)=>q.title?`<title>${Rq(q.title)}</title>`:"";function r(q,J,Q){let Y=J.background??q.background;if(Y===!1)return;return{d:Y==="square"?"M0 0H100V100H0Z":A({cx:50,cy:50,rx:50,ry:50,n:Y==="circle"?2:6}),fill:Q.bg}}var Oq=(q)=>q?`<path d="${q.d}" fill="${q.fill}"/>`:"";function a(q){return(J,Q={})=>{let{t:Y,palette:Z}=i(J,Q),X=b(Z,Q.expression),$=Q.size?` width="${Q.size}" height="${Q.size}"`:"",V=n(q.layout(Y),Q),G=Tq(Q)+Oq(r(q,Q,X))+_q(q.render(V.l,X),V.wrap);return`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"${$}>${G}</svg>`}}var s=(q,J,Q)=>{let Y=J.rx,Z=q.num("eye.rx",0.075,0.105)*Y,X=q.num("eye.ratio",1.9,3.2),$=q.num("eye.scale",0.78,1.24),V=q.num("eye.stretch",0.85,1.18),G=q.num("eye.gap",0.1,0.24)*Y,K=Z*Math.max(1,$),D=Z*X*Math.max(1,$*V),W=K+Y*0.03+G,j=q.jitter("gaze.x",0.09)*Q.rx,M=q.num("gaze.y",-0.2,0.08)*Q.ry,z=q.jitter("eye.dy",0.04)*Q.ry,U=Math.hypot(K,D),N=Math.hypot((Math.abs(j)+W+U)/Q.rx,(Math.abs(M)+Math.abs(z)+U)/Q.ry),P=N>0.9?0.9/N:1,B=Z*P,C=B*X,S=W*P,Iq=Math.max(0,Math.min(1,G/D)),Mq=Math.min(12,Math.asin(Iq)*180/Math.PI),E=q.num("eye.lean",-1,1)*Mq,Pq=Math.max(-12,Math.min(12,E+q.jitter("eye.lean2",3.5))),H=Q.cx+j*P,w=Q.cy+M*P;return[{cx:H-S,cy:w,rx:B,ry:C,n:q.num("eye.n",3.5,6),rot:E},{cx:H+S,cy:w+z*P,rx:B*$,ry:C*$*V,n:q.num("eye.n",3.5,6),rot:Pq}]};function o(q,J){let Q=(X)=>(q.find(([,$])=>X<$)??q[q.length-1])[0];function Y(X){let $=Q(X("shape")),V=X.num("body.r",31,38)*$.core,G={cx:50+X.jitter("body.x",1.5),cy:50+X.jitter("body.y",1.5),rx:V,ry:V*X.num("body.ratio",0.92,1.08),n:X.num("body.n",1.9,2.5),rot:0,radii:Array.from({length:X.int("body.pts",6,8)},(W,j)=>1+X.jitter(`body.r${j}`,0.16))};$.body?.(X,G);let K=$.face?.(G)??G,D={petals:[],extra:[]};return $.decorate?.(X,G,D),{shape:$.name,draw:$.path,body:G,face:K,petals:D.petals,extra:D.extra,eyes:J(X,G,K)}}function Z(X,$,V){let G=(W)=>Math.round(W*100)/100,K=(W,j)=>{let M=`<path d="${A(W)}"/>`;return V?`<g class="mo-eye" style="--mo-wrap:${j?1:-1};--mo-lean:${G(W.rot)};transform-origin:${G(W.cx)}px ${G(W.cy)}px">${M}</g>`:M},D=`<g fill="${$.head}">`+X.petals.map((W)=>`<circle cx="${G(W.cx)}" cy="${G(W.cy)}" r="${G(W.r)}"/>`).join("")+X.extra.map((W)=>`<path d="${W}"/>`).join("")+`<path d="${X.draw?X.draw(X.body):A(X.body)}"/></g><g fill="${$.eye}"${V?' class="mo-eyes"':""}>`+X.eyes.map(K).join("")+"</g>";return V?`<g class="mo-breathe"><g class="mo-bob">${D}</g></g>`:D}return{layout:Y,render:Z,background:!1}}var t=(q)=>c(q),e=(q)=>m(q.cx,q.cy,q.rx,q.ry,q.radii,q.rot),T=(q)=>(J)=>({cx:J.cx,cy:J.cy,rx:J.rx*q,ry:J.ry*q}),qq=(q)=>T(Math.min(...q.radii)*0.95)(q),Sq=(q)=>T(0.84)(q),Jq={name:"round",core:1},Qq={name:"organic",core:0.98,path:e,face:qq},Xq={name:"boxy",core:0.86,body:(q,J)=>{J.n=q.num("body.n",3.4,6),J.rot=q.num("body.rot",-20,20)}},Yq={name:"capsule",core:1.02,body:(q,J)=>{J.ry*=q.num("capsule.squat",0.55,0.68)},face:T(0.94),decorate:(q,J,Q)=>{for(let Y of[-1,1])Q.petals.push({cx:J.cx+Y*(J.rx-J.ry),cy:J.cy,r:J.ry})},path:(q)=>y(q.cx,q.cy,q.rx-q.ry,q.ry)},Zq={name:"nub",core:0.88,decorate:(q,J,Q)=>{let Y=q.int("nub.n",1,2);for(let Z=0;Z<Y;Z++){let X=q.num(`nub.a${Z}`,0,2*Math.PI);Q.petals.push({cx:J.cx+Math.cos(X)*J.rx*0.88,cy:J.cy+Math.sin(X)*J.rx*0.88,r:J.rx*q.num(`nub.r${Z}`,0.24,0.4)})}}},$q={name:"cloud",core:0.78,face:qq,path:e,decorate:(q,J,Q)=>{let Y=q.int("cloud.n",4,6);for(let Z=0;Z<Y;Z++){let X=Math.PI+Math.PI*(Z+0.5)/Y;Q.petals.push({cx:J.cx+Math.cos(X)*J.rx*0.8,cy:J.cy+Math.sin(X)*J.rx*0.5,r:J.rx*q.num(`cloud.r${Z}`,0.44,0.62)})}}},Vq={name:"droplet",core:0.78,body:(q,J)=>{J.cy+=0.22*J.ry,J.n=2},face:(q)=>({cx:q.cx,cy:q.cy+q.ry*0.05,rx:q.rx*0.88,ry:q.ry*0.88}),decorate:(q,J,Q)=>{Q.extra.push(h(J.cx,J.cy,J.rx,J.ry,q.num("droplet.tip",1.4,1.65)))}},Gq={name:"hexagon",core:1.05,path:t,face:Sq,body:(q,J)=>{J.sides=6,J.rot=q.num("body.rot",-12,12),J.round=q.num("poly.round",0.24,0.5)}},Wq={name:"sun",core:0.7,decorate:(q,J,Q)=>{let Y=q.int("sun.n",6,9),Z=J.rx*q.num("sun.dist",1,1.08),X=J.rx*q.num("sun.r",0.2,0.26),$=q.num("sun.rot",0,2*Math.PI);for(let V=0;V<Y;V++){let G=$+2*Math.PI*V/Y;Q.petals.push({cx:J.cx+Math.cos(G)*Z,cy:J.cy+Math.sin(G)*Z,r:X})}}},Kq={name:"triangle",core:1.15,path:t,body:(q,J)=>{J.sides=3,J.rot=q.num("body.rot",-5,5),J.round=q.num("poly.round",0.24,0.5)},face:(q)=>({cx:q.cx,cy:q.cy+q.ry*0.1,rx:q.rx*0.54,ry:q.ry*0.36})};var Eq=[[Jq,0.22],[Qq,0.48],[Xq,0.6],[Yq,0.7],[Zq,0.79],[$q,0.86],[Vq,0.915],[Gq,0.95],[Wq,0.98],[Kq,1]],Dq=o(Eq,s);var blobatar=a(Dq);
+
+// Helper: render a blobatar avatar at a given size
+function avatar(name, size) {
+  return blobatar(name || 'naija', { size, background: 'squircle' });
+}
+
+// ============================================================
+// GAZE TRACKING — eyes follow the cursor
+// ============================================================
+const gazeState = { mx: -1e6, my: -1e6, raf: 0, targets: [] };
+
+// Start listening for mouse movement immediately
+document.addEventListener('mousemove', (e) => {
+  gazeState.mx = e.clientX;
+  gazeState.my = e.clientY;
+  if (!gazeState.raf && gazeState.targets.length > 0) {
+    gazeState.raf = requestAnimationFrame(gazeTick);
+  }
+}, { passive: true });
+
+function registerGaze(svgEl) {
+  if (!svgEl || !svgEl.querySelector) return;
+  // Find the eye group — in blobatar's SVG structure it's the last <g> with <path> children
+  // The head group contains <circle> (petals) + <path> (body), the eye group only <path>
+  // Some shapes may not have circles, so we use position: eye group comes after head group
+  const groups = svgEl.querySelectorAll(':scope > g');
+  let eyeGroup = null;
+  
+  // Try direct children first (static mode - no animation wrapper)
+  if (groups.length >= 2) {
+    // Eye group is the last top-level <g> (head is first)
+    eyeGroup = groups[groups.length - 1];
+  }
+  
+  // If no direct children groups, look deeper (animation wrapper mode)
+  if (!eyeGroup) {
+    const allGroups = svgEl.querySelectorAll('g');
+    // Find the group that has only <path> children (no <circle>)
+    for (const g of allGroups) {
+      const hasCircles = g.querySelectorAll('circle').length > 0;
+      const hasPaths = g.querySelectorAll('path').length > 0;
+      if (!hasCircles && hasPaths && !g.classList.contains('mo-breathe') && !g.classList.contains('mo-bob')) {
+        eyeGroup = g;
+        break;
+      }
+    }
+  }
+  
+  if (!eyeGroup) return;
+  
+  gazeState.targets.push({ svg: svgEl, eyes: eyeGroup });
+  // Start the gaze loop if mouse position is known
+  if (!gazeState.raf && gazeState.mx > -1e6) {
+    gazeState.raf = requestAnimationFrame(gazeTick);
+  }
+}
+
+function gazeTick() {
+  gazeState.raf = 0;
+  const mx = gazeState.mx, my = gazeState.my;
+  
+  for (const t of gazeState.targets) {
+    if (!document.body.contains(t.svg)) continue;
+    const rect = t.svg.getBoundingClientRect();
+    if (rect.width === 0) continue;
+    
+    // Center of the SVG in viewport coords
+    const cx = rect.left + rect.width / 2;
+    const cy = rect.top + rect.height / 2;
+    
+    // Direction from center to mouse, normalized -1..1
+    const dx = (mx - cx) / (rect.width / 2);
+    const dy = (my - cy) / (rect.height / 2);
+    
+    // Distance — if mouse is on the avatar, reduce travel (deadzone)
+    const dist = Math.hypot(dx, dy);
+    const deadzone = 0.55;
+    const amp = dist > 0 ? Math.min(1, Math.max(0, (dist - deadzone) / (1 - deadzone))) : 0;
+    
+    // Max travel in viewBox units (eyes move up to ~3 units)
+    const travel = 3;
+    const tx = dist > 0 ? (dx / dist) * amp * travel : 0;
+    const ty = dist > 0 ? (dy / dist) * amp * travel : 0;
+    
+    // Apply transform — translate in viewBox units (SVG transform)
+    t.eyes.setAttribute('transform', `translate(${tx.toFixed(2)} ${ty.toFixed(2)})`);
+  }
+  
+  // Keep the loop alive as long as there are targets
+  if (gazeState.targets.length > 0) {
+    gazeState.raf = requestAnimationFrame(gazeTick);
+  }
+}
+
+// After each render, find avatar SVGs and register them for gaze
+function setupGazeAfterRender() {
+  // Clear previous targets since innerHTML was replaced
+  gazeState.targets = [];
+  const svgs = document.querySelectorAll('#app svg');
+  for (const svg of svgs) {
+    registerGaze(svg);
+  }
+}
+
+// ============================================================
+// GAME 1: 66-SECOND QUIZ — 66 questions
+// ============================================================
+
+const QUESTIONS = [
+  { id:"q1", question:"How many kilograms of jollof rice did Hilda Baci's team cook to set a Guinness World Record in Lagos?", options:["5,000 kg","8,780 kg","12,500 kg","6,200 kg"], correctIndex:1, tone:"fun", realStory:{ fact:"Hilda Baci's team and Gino partnered to cook 8,780 kg of jollof rice, serving over 16,600 portions in Lagos. Ghana could never.", date:"September 2025", source:"Guinness World Records" }, zone:"south-west", difficulty:"easy" },
+  { id:"q2", question:"How many hours did Hilda Baci cook non-stop to set her first Guinness World Record?", options:["72 hours","87 hours 45 minutes","93 hours 11 minutes","100 hours"], correctIndex:2, tone:"motivational", realStory:{ fact:"Hilda Baci cooked for 93 hours and 11 minutes in Lagos, breaking the previous record.", date:"May 2023", source:"Guinness World Records" }, zone:"south-west", difficulty:"easy" },
+  { id:"q3", question:"Tunde Onakoya broke the chess marathon world record in Times Square. How many hours did he play?", options:["48 hours","56 hours","60 hours","64 hours"], correctIndex:3, tone:"motivational", realStory:{ fact:"Tunde Onakoya played chess for 64 hours straight in New York's Times Square.", date:"April 2025", source:"Guinness World Records" }, zone:"south-west", difficulty:"medium" },
+  { id:"q4", question:"Where did Tunde Onakoya play his record-breaking chess marathon?", options:["Trafalgar Square, London","Times Square, New York","Tafawa Balewa Square, Lagos","Federation Square, Melbourne"], correctIndex:1, tone:"fun", realStory:{ fact:"Tunde Onakoya chose Times Square to set his chess marathon world record.", date:"April 2025", source:"Guinness World Records" }, zone:"south-west", difficulty:"easy" },
+  { id:"q5", question:"How many people attended the single-screening record-breaking Nollywood film event in Lagos?", options:["25,000","38,400","51,258","44,100"], correctIndex:2, tone:"fun", realStory:{ fact:"'Black Market' set a Guinness World Record with 51,258 attendees at Tafawa Balewa Square.", date:"September 2026", source:"Guinness World Records" }, zone:"south-west", difficulty:"medium" },
+  { id:"q6", question:"Nigerian barber Mary Chinonso set a world record by braiding how many heads of hair?", options:["200","275","387","450"], correctIndex:2, tone:"fun", realStory:{ fact:"Mary Chinonso braided 387 heads in a marathon session.", date:"2024", source:"Guinness World Records" }, zone:"south-east", difficulty:"medium" },
+  { id:"q7", question:"How many makeovers did Tacha complete in her Guinness World Record attempt?", options:["100","120","144","168"], correctIndex:2, tone:"sarcastic", realStory:{ fact:"Reality TV star Tacha completed 144 makeovers. Yes, 144.", date:"2025", source:"Guinness World Records" }, zone:"south-south", difficulty:"hard" },
+  { id:"q8", question:"Helen Williams set a Guinness Record for the world's longest wig. How long was it?", options:["150 meters","250 meters","351 meters","500 meters"], correctIndex:2, tone:"sarcastic", realStory:{ fact:"Helen Williams created a wig measuring 351.28 meters. That's about 3.5 football pitches.", date:"2023", source:"Guinness World Records" }, zone:"south-west", difficulty:"hard" },
+  { id:"q9", question:"Samson Ajao set a world record for the longest reading marathon. How many hours?", options:["120 hours","150 hours","200 hours","215 hours"], correctIndex:3, tone:"educational", realStory:{ fact:"Samson Ajao read aloud for 215 hours.", date:"2024", source:"Guinness World Records" }, zone:"south-west", difficulty:"hard" },
+  { id:"q10", question:"How many portions of jollof rice were served at the 2025 Guinness World Record event?", options:["8,000+","12,400+","16,600+","20,000+"], correctIndex:2, tone:"fun", realStory:{ fact:"Over 16,600 portions of jollof rice were served in Lagos.", date:"September 2025", source:"Guinness World Records" }, zone:"south-west", difficulty:"medium" },
+  { id:"q11", question:"Which Nigerian music legend received a posthumous Grammy Lifetime Achievement Award?", options:["King Sunny Ade","Fela Kuti","Ebenezer Obey","Osita Osadebe"], correctIndex:1, tone:"motivational", realStory:{ fact:"Fela Anikulapo Kuti received a posthumous Grammy Lifetime Achievement Award in 2026.", date:"February 2026", source:"Recording Academy" }, zone:"south-west", difficulty:"easy" },
+  { id:"q12", question:"Burna Boy won the Grammy for Best Global Music Album in 2021 for which album?", options:["African Giant","Twice as Tall","Love, Damini","I Told Them..."], correctIndex:1, tone:"educational", realStory:{ fact:"Burna Boy's 'Twice as Tall' won the 2021 Grammy for Best Global Music Album.", date:"March 2021", source:"Recording Academy" }, zone:"south-south", difficulty:"easy" },
+  { id:"q13", question:"Shaboozey, the Nigerian-American artist, won a 2026 Grammy for which hit song?", options:["Last Night","Espresso","A Bar Song (Tipsy)","Beautiful Things"], correctIndex:2, tone:"fun", realStory:{ fact:"Shaboozey won a Grammy for 'A Bar Song (Tipsy)' and dedicated it to children of immigrants.", date:"February 2026", source:"Recording Academy" }, zone:"north-central", difficulty:"medium" },
+  { id:"q14", question:"Which streaming platform named Wizkid the most-streamed artist in Nigeria in 2025?", options:["Apple Music","YouTube Music","Spotify","Audiomack"], correctIndex:2, tone:"educational", realStory:{ fact:"Spotify Wrapped 2025 crowned Wizkid as the most-streamed artist in Nigeria.", date:"December 2025", source:"Spotify" }, zone:"south-west", difficulty:"easy" },
+  { id:"q15", question:"The Grammys created a new category in 2024 specifically for which genre?", options:["Amapiano","Afrobeats","Highlife","Afro-fusion"], correctIndex:1, tone:"motivational", realStory:{ fact:"The Recording Academy introduced the Best African Music Performance category.", date:"2024", source:"Recording Academy" }, zone:"south-west", difficulty:"medium" },
+  { id:"q16", question:"Which Nigerian artist has the most Apple Music streams of all time among Nigerians?", options:["Wizkid","Davido","Burna Boy","Rema"], correctIndex:2, tone:"fun", realStory:{ fact:"Burna Boy was named the most-streamed Nigerian artist of all time on Apple Music.", date:"2023", source:"Apple Music" }, zone:"south-south", difficulty:"medium" },
+  { id:"q17", question:"Who won the 2024 CAF African Footballer of the Year award?", options:["Victor Osimhen","Ademola Lookman","Mohamed Salah","Victor Boniface"], correctIndex:1, tone:"motivational", realStory:{ fact:"Ademola Lookman won after a hat-trick in the Europa League final.", date:"December 2024", source:"CAF" }, zone:"south-west", difficulty:"easy" },
+  { id:"q18", question:"Which Nigerian women's football team won the 2026 WAFU-B Champions League?", options:["Bayelsa Queens","Rivers Angels","Edo Queens","Nasarawa Amazons"], correctIndex:2, tone:"fun", realStory:{ fact:"Edo Queens won both the NWFL Premier League and the WAFU-B Champions League.", date:"2026", source:"WAFU-B" }, zone:"south-south", difficulty:"easy" },
+  { id:"q19", question:"How far did the Super Eagles go in the 2023 AFCON tournament?", options:["Quarter-finals","Semi-finals","Final","Group stage"], correctIndex:2, tone:"educational", realStory:{ fact:"The Super Eagles reached the AFCON 2023 final in Ivory Coast.", date:"February 2024", source:"CAF" }, zone:"north-central", difficulty:"easy" },
+  { id:"q20", question:"Tobi Amusan set a world record in which athletics event?", options:["100m sprint","200m sprint","100m hurdles","400m hurdles"], correctIndex:2, tone:"motivational", realStory:{ fact:"Tobi Amusan ran 12.12 seconds in the 100m hurdles at the 2022 World Championships.", date:"July 2022", source:"World Athletics" }, zone:"south-west", difficulty:"easy" },
+  { id:"q21", question:"Which league title did Edo Queens win alongside their WAFU-B victory?", options:["NWFL Championship","NWFL Premier League","CAF Women's League","Nigeria Cup"], correctIndex:1, tone:"educational", realStory:{ fact:"Edo Queens achieved a historic double.", date:"2026", source:"Nigeria Women Football League" }, zone:"south-south", difficulty:"hard" },
+  { id:"q22", question:"Ademola Lookman scored a hat-trick in which European final?", options:["Champions League Final","Europa League Final","Conference League Final","Super Cup"], correctIndex:1, tone:"fun", realStory:{ fact:"Lookman scored three goals in the 2024 Europa League Final for Atalanta.", date:"May 2024", source:"UEFA" }, zone:"south-west", difficulty:"medium" },
+  { id:"q23", question:"At the 2025 AFCON, the Super Eagles beat Mozambique by what score?", options:["2-0","3-1","4-0","1-0"], correctIndex:2, tone:"sarcastic", realStory:{ fact:"Nigeria crushed Mozambique 4-0 in the AFCON 2025 Round of 16.", date:"January 2026", source:"CAF" }, zone:"north-central", difficulty:"hard" },
+  { id:"q24", question:"How many Nigerian tech startups have reached unicorn status ($1B+)?", options:["2","3","5","7"], correctIndex:2, tone:"educational", realStory:{ fact:"At least 5: Flutterwave, Interswitch, OPay, Andela, and Moniepoint.", date:"2025", source:"TechCrunch" }, zone:"south-west", difficulty:"medium" },
+  { id:"q25", question:"What is the approximate valuation of Flutterwave?", options:["$1 billion","$2 billion","$3 billion","$5 billion"], correctIndex:2, tone:"motivational", realStory:{ fact:"Flutterwave reached a valuation exceeding $3 billion.", date:"2025", source:"TechCrunch" }, zone:"south-west", difficulty:"hard" },
+  { id:"q26", question:"What did students at GTC Ikotun build that won a 2026 innovation challenge?", options:["A water purification drone","A solar-powered teaching robot","An AI-powered translator","A portable medical scanner"], correctIndex:1, tone:"motivational", realStory:{ fact:"Students won with 'Smarteach', a solar-powered teaching robot for off-grid communities.", date:"2026", source:"Kids Innovation Challenge" }, zone:"south-west", difficulty:"easy" },
+  { id:"q27", question:"What was the name of the solar-powered robot built by GTC Ikotun students?", options:["EduBot","Smarteach","SolarMind","TeachBeam"], correctIndex:1, tone:"fun", realStory:{ fact:"'Smarteach' — designed to teach in schools without electricity.", date:"2026", source:"Kids Innovation Challenge" }, zone:"south-west", difficulty:"easy" },
+  { id:"q28", question:"Nigeria is home to how many of Africa's five largest tech ecosystems?", options:["1","2","3","4"], correctIndex:0, tone:"sarcastic", realStory:{ fact:"Lagos alone represents one of Africa's top tech ecosystems.", date:"2025", source:"Partech Africa" }, zone:"south-west", difficulty:"medium" },
+  { id:"q29", question:"Which Nigerian fintech processes over 1 billion transactions monthly?", options:["Paystack","Flutterwave","Moniepoint","OPay"], correctIndex:2, tone:"educational", realStory:{ fact:"Moniepoint processes massive transaction volumes across Africa.", date:"2024", source:"Moniepoint" }, zone:"south-west", difficulty:"hard" },
+  { id:"q30", question:"Which Nollywood film was the highest-grossing Nigerian movie of 2024?", options:["A Tribe Called Judah","Everybody Loves Jenifa","The Black Book","Gangs of Lagos"], correctIndex:1, tone:"fun", realStory:{ fact:"Funke Akindele's 'Everybody Loves Jenifa' grossed over N1.8 billion.", date:"December 2024", source:"ShockNG" }, zone:"south-west", difficulty:"easy" },
+  { id:"q31", question:"How much did 'Everybody Loves Jenifa' earn in its opening weekend?", options:["N50 million","N120 million","N206 million","N300 million"], correctIndex:2, tone:"fun", realStory:{ fact:"N206 million in its opening weekend.", date:"December 2024", source:"Nairametrics" }, zone:"south-west", difficulty:"hard" },
+  { id:"q32", question:"Which Nigerian city hosted the record-breaking screening of 'Black Market'?", options:["Abuja","Lagos","Port Harcourt","Ibadan"], correctIndex:1, tone:"educational", realStory:{ fact:"Lagos hosted it at Tafawa Balewa Square.", date:"September 2026", source:"Guinness World Records" }, zone:"south-west", difficulty:"easy" },
+  { id:"q33", question:"What was the total Nollywood box office revenue in 2024?", options:["N5.5 billion","N8.2 billion","N11.5 billion","N15 billion"], correctIndex:2, tone:"educational", realStory:{ fact:"N11.5 billion — a 60% growth from the previous year.", date:"2024", source:"ShockNG" }, zone:"south-west", difficulty:"hard" },
+  { id:"q34", question:"Rachel Ikemeh won a Rolex Award for protecting which animal?", options:["Forest elephant","Nigerian-Cameroon chimpanzee","Niger Delta red colobus monkey","West African manatee"], correctIndex:2, tone:"educational", realStory:{ fact:"She doubled the population of the Niger Delta red colobus monkey.", date:"2024", source:"Rolex Awards" }, zone:"south-south", difficulty:"medium" },
+  { id:"q35", question:"In what ecosystem did Rachel Ikemeh conduct her conservation work?", options:["Sahel savanna","Jos Plateau highlands","Niger Delta mangroves","Obudu mountain forests"], correctIndex:2, tone:"educational", realStory:{ fact:"She worked in the Niger Delta mangrove forests.", date:"2021-2024", source:"Rolex Awards" }, zone:"south-south", difficulty:"medium" },
+  { id:"q36", question:"What was Nigeria's GDP growth rate that made headlines in 2025?", options:["2.15%","3.89%","4.43%","5.02%"], correctIndex:2, tone:"educational", realStory:{ fact:"Nigeria recorded a 4.43% GDP growth rate.", date:"2025", source:"National Bureau of Statistics" }, zone:"north-central", difficulty:"hard" },
+  { id:"q37", question:"Who is the first African to serve as Director-General of the WTO?", options:["Amina Mohammed","Akinwumi Adesina","Ngozi Okonjo-Iweala","Diezani Alison-Madueke"], correctIndex:2, tone:"motivational", realStory:{ fact:"Dr. Ngozi Okonjo-Iweala became the first African and first woman to lead the WTO.", date:"2021", source:"WTO" }, zone:"south-south", difficulty:"easy" },
+  { id:"q38", question:"In what year was Ngozi Okonjo-Iweala re-elected as WTO Director-General?", options:["2023","2024","2025","2026"], correctIndex:2, tone:"fun", realStory:{ fact:"Re-elected for a second term in 2025.", date:"2025", source:"WTO" }, zone:"south-south", difficulty:"medium" },
+  { id:"q39", question:"How many Nigerian children were vaccinated against variant polio by October 2025?", options:["12.5 million","25 million","38.5 million","50 million"], correctIndex:2, tone:"motivational", realStory:{ fact:"Approximately 38.5 million children were vaccinated.", date:"October 2025", source:"WHO Nigeria" }, zone:"north-central", difficulty:"hard" },
+  { id:"q40", question:"Approximately how many languages are spoken in Nigeria?", options:["Over 200","Over 350","Over 520","Over 700"], correctIndex:2, tone:"educational", realStory:{ fact:"Nigeria has over 520 living languages.", date:"2024", source:"Ethnologue" }, zone:"north-central", difficulty:"medium" },
+  { id:"q41", question:"How many ethnic groups does Nigeria have?", options:["About 100","About 250","About 370","About 500"], correctIndex:1, tone:"educational", realStory:{ fact:"Nigeria has over 250 ethnic groups.", date:"2024", source:"Nigerian Government" }, zone:"north-central", difficulty:"easy" },
+  { id:"q42", question:"Which Nigerian dish has caused the most intense rivalry with Ghana?", options:["Pounded yam","Suya","Jollof rice","Egusi soup"], correctIndex:2, tone:"funny", realStory:{ fact:"The 'Jollof Wars' is one of the internet's longest-running food debates.", date:"2020-2026", source:"Nigerian Twitter" }, zone:"south-west", difficulty:"easy" },
+  { id:"q43", question:"What is 'owambe' in Nigerian culture?", options:["A traditional dance","A lavish party or celebration","A type of fabric","A greeting"], correctIndex:1, tone:"fun", realStory:{ fact:"'Owambe' refers to the lavish, colorful parties Nigerians are famous for.", date:"Ongoing", source:"Nigerian Culture" }, zone:"south-west", difficulty:"easy" },
+  { id:"q44", question:"The phrase 'No wahala' in Nigerian Pidgin means what?", options:["Big trouble","No problem","Let's go","I'm hungry"], correctIndex:1, tone:"fun", realStory:{ fact:"'No wahala' means 'no problem' or 'it's all good.'", date:"Ongoing", source:"Nigerian Pidgin" }, zone:"south-south", difficulty:"easy" },
+  { id:"q45", question:"Nigeria celebrates its Independence Day on which date?", options:["September 15","October 1","November 12","August 6"], correctIndex:1, tone:"educational", realStory:{ fact:"Nigeria gained independence on October 1, 1960. 2026 marks 66 years!", date:"October 1, 1960", source:"Federal Government of Nigeria" }, zone:"north-central", difficulty:"easy" },
+  { id:"q46", question:"In what year did Nigeria gain independence from Britain?", options:["1957","1958","1960","1963"], correctIndex:2, tone:"educational", realStory:{ fact:"Nigeria became independent on October 1, 1960.", date:"October 1, 1960", source:"Federal Government of Nigeria" }, zone:"north-central", difficulty:"easy" },
+  { id:"q47", question:"How many years of independence is Nigeria celebrating in 2026?", options:["60","62","64","66"], correctIndex:3, tone:"fun", realStory:{ fact:"66 years of jollof, hustle, music, innovation.", date:"October 1, 2026", source:"Federal Government of Nigeria" }, zone:"north-central", difficulty:"easy" },
+  { id:"q48", question:"What colors appear on the Nigerian flag?", options:["Green and white","Green, white, and gold","Green, white, and red","Green and yellow"], correctIndex:0, tone:"educational", realStory:{ fact:"Two green bands on either side of a white band.", date:"1960", source:"Federal Government of Nigeria" }, zone:"north-central", difficulty:"easy" },
+  { id:"q49", question:"What is Nigeria's national motto?", options:["One Nation, One Destiny","Unity and Faith, Peace and Progress","Strength in Diversity","Together We Stand"], correctIndex:1, tone:"educational", realStory:{ fact:"Adopted in 1978.", date:"1978", source:"Federal Government of Nigeria" }, zone:"north-central", difficulty:"medium" },
+  { id:"q50", question:"What is the capital city of Nigeria?", options:["Lagos","Abuja","Kano","Port Harcourt"], correctIndex:1, tone:"educational", realStory:{ fact:"Abuja became the capital in 1991, replacing Lagos.", date:"1991", source:"Federal Government of Nigeria" }, zone:"north-central", difficulty:"easy" },
+  { id:"q51", question:"Nigeria's population is approximately how many people?", options:["150 million","180 million","220 million","300 million"], correctIndex:2, tone:"sarcastic", realStory:{ fact:"Over 220 million, Africa's most populous country.", date:"2024", source:"UN Population Division" }, zone:"north-central", difficulty:"easy" },
+  { id:"q52", question:"What does 'NEPA' stand for, and what is it famous for?", options:["National Energy Power Authority — reliable power","National Electric Power Authority — power outages","Nigerian Energy Performance Agency — solar power","National Electricity Planning Authority — grid expansion"], correctIndex:1, tone:"sarcastic", realStory:{ fact:"NEPA became synonymous with power outages. Nigerians joked it meant 'Never Expect Power Always.'", date:"Ongoing", source:"Nigerian Culture" }, zone:"north-central", difficulty:"easy" },
+  { id:"q53", question:"What is the famous Nigerian internet phrase for expressing disbelief?", options:["Na wa o!","E be things!","God when?","Wetin dey happen?"], correctIndex:0, tone:"funny", realStory:{ fact:"'Na wa o!' works in literally every situation.", date:"Ongoing", source:"Nigerian Pidgin" }, zone:"south-west", difficulty:"easy" },
+  { id:"q54", question:"Lagos is the largest city in Africa. What is its estimated population?", options:["10 million","15 million","21 million","30 million"], correctIndex:2, tone:"educational", realStory:{ fact:"Over 21 million in its metropolitan area.", date:"2024", source:"UN Habitat" }, zone:"south-west", difficulty:"medium" },
+  { id:"q55", question:"What time does the average Lagosian spend in traffic daily?", options:["1 hour","2 hours","3-4 hours","6+ hours"], correctIndex:2, tone:"sarcastic", realStory:{ fact:"Lagosians spend an average of 3-4 hours daily in traffic.", date:"2024", source:"Traffic Studies" }, zone:"south-west", difficulty:"medium" },
+  { id:"q56", question:"How many states does Nigeria have (including the FCT)?", options:["30 + FCT","34 + FCT","36 + FCT","40 + FCT"], correctIndex:2, tone:"educational", realStory:{ fact:"36 states plus the Federal Capital Territory.", date:"Current", source:"Nigerian Constitution" }, zone:"north-central", difficulty:"easy" },
+  { id:"q57", question:"Which national park is home to Africa's last remaining forest elephants?", options:["Yankari National Park","Gashaka-Gumti National Park","Cross River National Park","Kainji Lake National Park"], correctIndex:2, tone:"educational", realStory:{ fact:"Cross River National Park harbors forest elephants and Cross River gorillas.", date:"Current", source:"Wildlife Conservation Society" }, zone:"south-south", difficulty:"hard" },
+  { id:"q58", question:"What is the longest river in Nigeria?", options:["Benue River","Niger River","Ogun River","Cross River"], correctIndex:1, tone:"educational", realStory:{ fact:"The Niger River, from which Nigeria gets its name.", date:"Current", source:"Geography of Nigeria" }, zone:"north-central", difficulty:"easy" },
+  { id:"q59", question:"Which organization did Tunde Onakoya found?", options:["Chess Masters Africa","Chess in Slums Africa","Lagos Chess Academy","Nigerian Chess Foundation"], correctIndex:1, tone:"motivational", realStory:{ fact:"Tunde Onakoya founded Chess in Slums Africa.", date:"2018", source:"Chess in Slums Africa" }, zone:"south-west", difficulty:"medium" },
+  { id:"q60", question:"Which Nigerian co-founded Andela, the billion-dollar tech company?", options:["Olugbenga Agboola","Jeremy Johnson","Iyinoluwa Aboyeji","Shola Akinlade"], correctIndex:2, tone:"motivational", realStory:{ fact:"Iyinoluwa 'E' Aboyeji co-founded Andela and Flutterwave.", date:"2014", source:"Andela" }, zone:"south-west", difficulty:"hard" },
+  { id:"q61", question:"What fabric is traditionally worn to Nigerian weddings and parties?", options:["Kente","Aso-oke","Ankara","Batik"], correctIndex:2, tone:"fun", realStory:{ fact:"Ankara and the coordinated 'aso-ebi' tradition are uniquely Nigerian.", date:"Ongoing", source:"Nigerian Culture" }, zone:"south-west", difficulty:"easy" },
+  { id:"q62", question:"What do Nigerians call the special, smoky-flavored rice cooked at outdoor parties?", options:["Fried rice","Coconut rice","Party jollof","Sunday rice"], correctIndex:2, tone:"funny", realStory:{ fact:"'Party jollof' somehow always tastes better than homemade. Scientists still can't explain it.", date:"Ongoing", source:"Nigerian Culture" }, zone:"south-west", difficulty:"easy" },
+  { id:"q63", question:"'Sapa' in Nigerian slang refers to what?", options:["Being very rich","Being broke or in financial hardship","Being in love","Having too much food"], correctIndex:1, tone:"funny", realStory:{ fact:"'Sapa' is Gen-Z slang for being broke. It's not just broke, it's BROKE broke.", date:"2020s", source:"Nigerian Slang" }, zone:"south-west", difficulty:"easy" },
+  { id:"q64", question:"What does 'Japa' mean in Nigerian slang?", options:["To dance wildly","To eat a lot","To run away / emigrate","To start a business"], correctIndex:2, tone:"sarcastic", realStory:{ fact:"'Japa' became one of the most used Nigerian words of the 2020s.", date:"2020s", source:"Nigerian Slang" }, zone:"south-west", difficulty:"easy" },
+  { id:"q65", question:"Which Nigerian city is known as the 'Centre of Commerce'?", options:["Abuja","Lagos","Kano","Port Harcourt"], correctIndex:2, tone:"educational", realStory:{ fact:"Kano has been a major commercial hub for centuries.", date:"Current", source:"Nigerian Geography" }, zone:"north-west", difficulty:"medium" },
+  { id:"q66", question:"What is the traditional Yoruba greeting to someone older than you?", options:["E kaaro","E ku ile","E pele o","E se"], correctIndex:0, tone:"educational", realStory:{ fact:"'E kaaro' (good morning) plus prostrating or kneeling defines Yoruba respect culture.", date:"Ongoing", source:"Yoruba Culture" }, zone:"south-west", difficulty:"medium" }
+];
+
+// ============================================================
+// GAME 2: WHO SAID IT? — 30 quotes
+// ============================================================
+
+const QUOTES = [
+  { quote:"Music is the weapon of the future.", person:"Fela Kuti", options:["Fela Kuti","King Sunny Ade","Burna Boy","Ebenezer Obey"], fact:"Fela Anikulapo Kuti, the inventor of Afrobeat, used music as protest against military rule." },
+  { quote:"I no be gentleman at all. I be Africa man original.", person:"Fela Kuti", options:["Wizkid","Fela Kuti","Davido","2Baba"], fact:"From Fela's iconic track 'Gentleman', rejecting Western standards of behavior." },
+  { quote:"There are things that sleep doesn't solve. You have to get up and hustle.", person:"Burna Boy", options:["Obi Cubana","Burna Boy","Don Jazzy","Hushpuppi"], fact:"Burna Boy on the Nigerian hustle spirit that drove his rise to global stardom." },
+  { quote:"The greatest thing Nigeria has produced is its people.", person:"Chimamanda Ngozi Adichie", options:["Wole Soyinka","Chinua Achebe","Chimamanda Ngozi Adichie","Ben Okri"], fact:"Adichie, author of 'Half of a Yellow Sun', celebrating Nigerian resilience." },
+  { quote:"There was a country.", person:"Chinua Achebe", options:["Chinua Achebe","Wole Soyinka","Chimamanda Ngozi Adichie","Cyprian Ekwensi"], fact:"The title of Achebe's memoir about the Biafran War, his final published work." },
+  { quote:"The man dies in all who keep silent in the face of tyranny.", person:"Wole Soyinka", options:["Fela Kuti","Wole Soyinka","Ken Saro-Wiwa","Gani Fawehinmi"], fact:"Nobel laureate Wole Soyinka, from 'The Man Died', written during his prison detention." },
+  { quote:"I am not a product of my circumstances. I am a product of my decisions.", person:"Ngozi Okonjo-Iweala", options:["Mo Abudu","Ngozi Okonjo-Iweala","Amina Mohammed","Dora Akunyili"], fact:"The first African and first woman to lead the World Trade Organization." },
+  { quote:"African Giant. That's not a name, that's a state of mind.", person:"Burna Boy", options:["Wizkid","Davido","Burna Boy","Rema"], fact:"Burna Boy's self-given title, now a Grammy-winning album name." },
+  { quote:"We must not allow our creative energies to be wasted.", person:"Wole Soyinka", options:["Chinua Achebe","Wole Soyinka","J.P. Clark","Niyi Osundare"], fact:"Soyinka on the importance of nurturing Nigeria's creative industries." },
+  { quote:"If you don't like the story being told, write your own.", person:"Chimamanda Ngozi Adichie", options:["Chimamanda Ngozi Adichie","Luvvie Ajayi","Nnedi Okofor","Buchi Emecheta"], fact:"From Adichie's famous TED Talk on the danger of a single story." },
+  { quote:"Starboy for life.", person:"Wizkid", options:["Davido","Rema","Burna Boy","Wizkid"], fact:"Wizkid's signature persona, from his record label name to his global brand." },
+  { quote:"We rise by lifting others.", person:"Tunde Onakoya", options:["Aliko Dangote","Tunde Onakoya","Tony Elumelu","Jim Ovia"], fact:"The Chess in Slums founder who broke the world chess marathon record." },
+  { quote:"001. Davido!", person:"Davido", options:["Wizkid","Burna Boy","Davido","Olamide"], fact:"Davido's iconic self-introduction. Self-confidence level: Nigerian." },
+  { quote:"I come from nothing, but I'm something now.", person:"Rema", options:["Fireboy DML","Rema","Asake","Ruger"], fact:"Rema, the youngest Nigerian to top global charts with 'Calm Down'." },
+  { quote:"A dream doesn't become reality through magic; it takes determination.", person:"Aliko Dangote", options:["Tony Elumelu","Aliko Dangote","Femi Otedola","Mike Adenuga"], fact:"Africa's richest man built his empire from Lagos." },
+  { quote:"I am because we are.", person:"Chinua Achebe", options:["Wole Soyinka","Ben Okri","Chinua Achebe","Flora Nwapa"], fact:"Achebe's expression of the Ubuntu philosophy, reflecting communal Nigerian values." },
+  { quote:"When you educate a woman, you educate a nation.", person:"Dora Akunyili", options:["Oby Ezekwesili","Dora Akunyili","Amina Mohammed","Ngozi Okonjo-Iweala"], fact:"The late NAFDAC DG who fought fake drugs and championed education." },
+  { quote:"Nigeria will not be destroyed by external aggression but by our internal divisions.", person:"Obafemi Awolowo", options:["Nnamdi Azikiwe","Obafemi Awolowo","Ahmadu Bello","Tafawa Balewa"], fact:"Premier of the Western Region and one of Nigeria's founding fathers." },
+  { quote:"If I perish, I perish.", person:"Ken Saro-Wiwa", options:["Ken Saro-Wiwa","Wole Soyinka","Fela Kuti","Gani Fawehinmi"], fact:"The writer and activist who died fighting for Ogoni rights in the Niger Delta." },
+  { quote:"I am big enough to admit I am often inspired by myself.", person:"Don Jazzy", options:["Olamide","Don Jazzy","2Baba","D'banj"], fact:"The Mavin Records boss, known for his wit on social media." },
+  { quote:"No one person can do everything, but everyone can do something.", person:"Tony Elumelu", options:["Aliko Dangote","Tony Elumelu","Jim Ovia","Folorunsho Alakija"], fact:"The UBA chairman and Africapitalism advocate." },
+  { quote:"E get why.", person:"Asake", options:["Seyi Vibez","Asake","Portable","Zinoleesky"], fact:"Asake's signature phrase. Nobody knows exactly what it means. That's the point." },
+  { quote:"Na who dey hustle, God dey bless.", person:"Olamide", options:["Olamide","Phyno","Reminisce","Zlatan"], fact:"Olamide, the voice of the streets, on the Nigerian grind." },
+  { quote:"The best time to invest in Africa is now.", person:"Tony Elumelu", options:["Aliko Dangote","Akinwumi Adesina","Tony Elumelu","Strive Masiyiwa"], fact:"Elumelu coined 'Africapitalism' to champion private-sector-led development." },
+  { quote:"Chess gave me a chance. I want to give that chance to every child.", person:"Tunde Onakoya", options:["Tunde Onakoya","Odion Ighalo","Asisat Oshoala","Kanu Nwankwo"], fact:"Onakoya went from learning chess in Lagos streets to setting world records." },
+  { quote:"My life has been a testimony that the rejected stone can become the chief cornerstone.", person:"Goodluck Jonathan", options:["Olusegun Obasanjo","Goodluck Jonathan","Muhammadu Buhari","Yakubu Gowon"], fact:"Nigeria's former president, the first sitting president to concede defeat via phone call." },
+  { quote:"Twice as Tall. Not once. Twice.", person:"Burna Boy", options:["Wizkid","Burna Boy","Davido","Fireboy DML"], fact:"Named his Grammy-winning album 'Twice as Tall' as a statement of Nigerian ambition." },
+  { quote:"Lagos is the centre of excellence.", person:"Bola Tinubu", options:["Babajide Sanwo-Olu","Bola Tinubu","Lateef Jakande","Akinwunmi Ambode"], fact:"Lagos adopted 'Centre of Excellence' as its official motto." },
+  { quote:"Every generation has a chance to rewrite history.", person:"Mo Abudu", options:["Genevieve Nnaji","Mo Abudu","Funke Akindele","Omotola Jalade-Ekeinde"], fact:"Africa's most successful woman in media, founder of EbonyLife." },
+  { quote:"I cook with love, I cook with passion, I cook for Nigeria.", person:"Hilda Baci", options:["Hilda Baci","Sisi Yemmie","Chef Fregz","Imoteda Aladekomo"], fact:"Before her world records, Hilda Baci was already one of Nigeria's most beloved chefs." }
+];
+
+// ============================================================
+// GAME 3: NAME THAT STATE — 37 states + FCT
+// ============================================================
+
+const STATE_CLUES = [
+  { state:"Lagos", clues:["Capital: Ikeja","Nicknamed 'Centre of Excellence'","Most populous city in Africa","Home of Nollywood and Nigerian music industry"], zone:"south-west" },
+  { state:"Kano", clues:["Capital: Kano","Nicknamed 'Centre of Commerce'","Largest city in Northern Nigeria","Famous for Kano city walls and indigo dyeing"], zone:"north-west" },
+  { state:"Rivers", clues:["Capital: Port Harcourt","Known as the 'Garden City'","Major oil-producing state","Home to Bonny Island LNG terminal"], zone:"south-south" },
+  { state:"Oyo", clues:["Capital: Ibadan","Home to the first university in Nigeria (UI)","Ibadan was once the largest city in Africa","Known for Cocoa House, first skyscraper in tropical Africa"], zone:"south-west" },
+  { state:"Enugu", clues:["Capital: Enugu","Known as the 'Coal City'","Former capital of Eastern Region","Home to the National Museum of Unity"], zone:"south-east" },
+  { state:"Kaduna", clues:["Capital: Kaduna","Named after crocodiles in its river","Known for Kajuru Castle","Major military hub in Nigeria"], zone:"north-west" },
+  { state:"FCT", clues:["Capital: Abuja","Nigeria's federal capital since 1991","Home to Aso Rock presidential villa","Zuma Rock is nearby"], zone:"north-central" },
+  { state:"Anambra", clues:["Capital: Awka","Known for Onitsha Market, one of Africa's largest","Home to many Nigerian entrepreneurs","Nicknamed 'Light of the Nation'"], zone:"south-east" },
+  { state:"Edo", clues:["Capital: Benin City","Home to ancient Benin Kingdom bronzes","Known for the Benin Moat","Edo Queens won the WAFU-B Champions League"], zone:"south-south" },
+  { state:"Delta", clues:["Capital: Asaba","Major oil-producing state","Known for its diverse ethnic groups","Home to Warri, the 'oil city'"], zone:"south-south" },
+  { state:"Plateau", clues:["Capital: Jos","Known as 'Home of Peace and Tourism'","Cooler climate, nicknamed 'J-Town'","Famous for tin mining and beautiful landscapes"], zone:"north-central" },
+  { state:"Cross River", clues:["Capital: Calabar","Home to the Calabar Carnival","Has one of Nigeria's biodiversity hotspots","Famous Cross River gorillas live here"], zone:"south-south" },
+  { state:"Osun", clues:["Capital: Osogbo","Home to the Osun-Osogbo Sacred Grove (UNESCO site)","Known for Osun festival","Named after the Osun River goddess"], zone:"south-west" },
+  { state:"Borno", clues:["Capital: Maiduguri","Largest state by land area","Named after the Kanem-Bornu Empire","Located in the far northeast"], zone:"north-east" },
+  { state:"Kwara", clues:["Capital: Ilorin","Nicknamed 'State of Harmony'","Gateway between Northern and Southern Nigeria","Home to the University of Ilorin"], zone:"north-central" },
+  { state:"Ogun", clues:["Capital: Abeokuta","Nicknamed 'Gateway State'","Birthplace of many Nigerian leaders","Home to Olumo Rock"], zone:"south-west" },
+  { state:"Imo", clues:["Capital: Owerri","Known as the 'Eastern Heartland'","Famous for its palm oil production","Home to Oguta Lake"], zone:"south-east" },
+  { state:"Bayelsa", clues:["Capital: Yenagoa","Smallest state by population","Major oil-producing state","Created from Rivers State in 1996"], zone:"south-south" },
+  { state:"Sokoto", clues:["Capital: Sokoto","Seat of the Caliphate","One of the hottest cities in Nigeria","Known for its sultanate and Islamic heritage"], zone:"north-west" },
+  { state:"Benue", clues:["Capital: Makurdi","Known as the 'Food Basket of the Nation'","Named after the Benue River","Famous for its agricultural output"], zone:"north-central" }
+];
+
+// ============================================================
+// GAME 4: JOLLOF OR NO JOLLOF (True/False) — 40 facts
+// ============================================================
+
+const JOLLOF_FACTS = [
+  { statement:"Nigeria has more than 520 living languages.", isTrue:true, explanation:"Nigeria has over 520 living languages, making it one of the most linguistically diverse countries on Earth." },
+  { statement:"Lagos was once the capital of Nigeria.", isTrue:true, explanation:"Lagos was Nigeria's capital until 1991 when Abuja became the new capital." },
+  { statement:"The Nigerian flag has three colors: green, white, and gold.", isTrue:false, explanation:"The Nigerian flag has only two colors: green and white. No gold!" },
+  { statement:"Nigeria is the most populous country in Africa.", isTrue:true, explanation:"With over 220 million people, Nigeria is by far the most populous African nation." },
+  { statement:"Jollof rice originated in Nigeria.", isTrue:false, explanation:"Jollof rice actually originated from the Wolof people of Senegal/Gambia. But Nigerian jollof is the best. We said what we said." },
+  { statement:"Nigeria has produced a Nobel Prize winner in Literature.", isTrue:true, explanation:"Wole Soyinka won the Nobel Prize in Literature in 1986, the first African to do so." },
+  { statement:"The Naira is named after the Niger River.", isTrue:true, explanation:"Nigeria's currency, the Naira, derives its name from the River Niger." },
+  { statement:"Nigeria is the largest oil producer in the world.", isTrue:false, explanation:"Nigeria is Africa's largest oil producer but not the world's. The US, Saudi Arabia, and Russia produce more." },
+  { statement:"Nollywood is the third-largest film industry in the world by number of films.", isTrue:true, explanation:"Nollywood produces about 2,500 films annually, ranking behind only Bollywood and Hollywood." },
+  { statement:"Nigeria has won the FIFA World Cup.", isTrue:false, explanation:"Nigeria has never won the FIFA World Cup, but has won the Africa Cup of Nations three times." },
+  { statement:"Aliko Dangote is the richest person in Africa.", isTrue:true, explanation:"Aliko Dangote, the cement magnate from Kano, has consistently been ranked Africa's wealthiest person." },
+  { statement:"Nigeria's Independence Day is on August 1st.", isTrue:false, explanation:"Nigeria's Independence Day is October 1st, not August 1st. Since 1960!" },
+  { statement:"Suya is a popular Nigerian street food made from spiced grilled meat.", isTrue:true, explanation:"Suya is one of Nigeria's most beloved street foods, made from thinly sliced, skewered, and grilled meat coated in yaji spice." },
+  { statement:"Nigeria is located in East Africa.", isTrue:false, explanation:"Nigeria is in West Africa, on the Gulf of Guinea." },
+  { statement:"'Wahala' means 'celebration' in Nigerian Pidgin.", isTrue:false, explanation:"'Wahala' means trouble or problem. 'Wahala dey' = there's trouble!" },
+  { statement:"Nigeria has a space agency called NASRDA.", isTrue:true, explanation:"The National Space Research and Development Agency (NASRDA) was established in 1999. Nigeria has even launched satellites!" },
+  { statement:"Benin City was once the capital of a powerful West African kingdom.", isTrue:true, explanation:"The Kingdom of Benin was one of the most sophisticated states in pre-colonial Africa, famous for its bronze sculptures." },
+  { statement:"The Super Eagles is the nickname of Nigeria's national football team.", isTrue:true, explanation:"The men's national team has been known as the Super Eagles since the 1980s." },
+  { statement:"Nigeria has 72 states.", isTrue:false, explanation:"Nigeria has 36 states plus the FCT. 72 is double the actual number!" },
+  { statement:"Pidgin English is an official language of Nigeria.", isTrue:false, explanation:"English is Nigeria's only official language. Pidgin is widely spoken but not official, though the BBC now broadcasts in it." },
+  { statement:"Chinua Achebe wrote 'Things Fall Apart', the most widely read African novel.", isTrue:true, explanation:"Published in 1958, 'Things Fall Apart' has sold over 20 million copies and been translated into 50+ languages." },
+  { statement:"The tallest building in Africa is in Lagos.", isTrue:false, explanation:"The tallest building in Africa is in various other countries. Lagos has tall buildings but not the continent's tallest." },
+  { statement:"Afrobeats originated in Nigeria.", isTrue:true, explanation:"Modern Afrobeats (distinct from Fela's Afrobeat) emerged from Nigeria's music scene in the 2000s-2010s." },
+  { statement:"Nigeria borders the Mediterranean Sea.", isTrue:false, explanation:"Nigeria borders the Gulf of Guinea in the Atlantic Ocean, not the Mediterranean. The Mediterranean is in North Africa." },
+  { statement:"Egusi soup is made from melon seeds.", isTrue:true, explanation:"Egusi is made from ground melon seeds and is one of Nigeria's most popular soups." },
+  { statement:"The Nigerian film industry is older than Bollywood.", isTrue:false, explanation:"Bollywood dates to early 1900s. Nollywood began in the early 1990s with Kenneth Nnebue's 'Living in Bondage' (1992)." },
+  { statement:"Nigeria was once known as the 'Giant of Africa'.", isTrue:true, explanation:"Nigeria earned this nickname due to its large population, economy, and cultural influence across the continent." },
+  { statement:"Amala is a popular dish made from yam flour.", isTrue:true, explanation:"Amala, particularly popular among the Yoruba, is made from yam flour (elubo) and served with various soups." },
+  { statement:"Lagos has a population larger than many African countries.", isTrue:true, explanation:"Lagos metro area (21M+) has a larger population than countries like Cameroon, Niger, and Malawi." },
+  { statement:"The Niger River flows through 5 Nigerian states.", isTrue:false, explanation:"The Niger River flows through 9 Nigerian states before emptying into the Atlantic through the Niger Delta." },
+  { statement:"Nigeria's first satellite was launched in 2003.", isTrue:true, explanation:"NigeriaSat-1 was launched in 2003 from Russia, making Nigeria one of the first African countries with a satellite." },
+  { statement:"'Oga at the top' is a respectful term for your boss.", isTrue:true, explanation:"'Oga' means boss or chief. 'Oga at the top' refers to the person in ultimate charge." },
+  { statement:"Nigeria exports more crude oil than Saudi Arabia.", isTrue:false, explanation:"Saudi Arabia exports significantly more crude oil than Nigeria. Nigeria ranks around 6th-8th globally." },
+  { statement:"Yankari National Park has natural warm springs.", isTrue:true, explanation:"Yankari National Park in Bauchi State features the famous Wikki Warm Springs, a natural warm water pool." },
+  { statement:"The Nigerian Civil War lasted from 1967 to 1970.", isTrue:true, explanation:"Also known as the Biafran War, it lasted from July 1967 to January 1970." },
+  { statement:"Pounded yam is made by blending cassava.", isTrue:false, explanation:"Pounded yam is made by boiling and pounding yams with a mortar and pestle. Cassava makes garri or fufu!" },
+  { statement:"Nigeria has won Olympic gold medals.", isTrue:true, explanation:"Nigeria has won Olympic gold, including the men's football (soccer) gold at the 1996 Atlanta Olympics." },
+  { statement:"Abuja is located in the geographical center of Nigeria.", isTrue:true, explanation:"Abuja was specifically chosen as the capital because of its central location, accessible from all parts of the country." },
+  { statement:"Wizkid's 'Essence' was the first Afrobeats song to reach Billboard Hot 100 Top 10.", isTrue:true, explanation:"Wizkid's 'Essence' featuring Tems peaked at #9 on Billboard Hot 100 in 2021." },
+  { statement:"Nigeria has more internet users than any other African country.", isTrue:true, explanation:"With over 100 million internet users, Nigeria has the highest number in Africa." }
+];
+
+// ============================================================
+// GAME 5: PIDGIN TRANSLATOR — 30 phrases
+// ============================================================
+
+const PIDGIN_PHRASES = [
+  { pidgin:"How far?", meaning:"How are you? / What's up?", correctIndex:0, options:["How are you?","How far is it?","Are you tall?","Where are you going?"] },
+  { pidgin:"I wan chop", meaning:"I want to eat", correctIndex:0, options:["I want to eat","I want to leave","I want to shop","I want to chop wood"] },
+  { pidgin:"Wahala dey", meaning:"There's trouble/problem", correctIndex:1, options:["Let's celebrate","There's trouble","I'm happy","The weather is nice"] },
+  { pidgin:"Abeg", meaning:"Please", correctIndex:3, options:["I beg you","Go away","Thank you","Please"] },
+  { pidgin:"Oya na", meaning:"Let's go / Come on / Hurry up", correctIndex:1, options:["Oh no!","Let's go / Come on","Goodbye","I'm tired"] },
+  { pidgin:"E don do", meaning:"It's enough / Stop it", correctIndex:1, options:["It's done well","It's enough / Stop it","Do it again","It's afternoon"] },
+  { pidgin:"No wahala", meaning:"No problem", correctIndex:1, options:["Big problem","No problem","No water","No way"] },
+  { pidgin:"I no sabi", meaning:"I don't know / understand", correctIndex:2, options:["I'm not happy","I'm very smart","I don't know","I'm not coming"] },
+  { pidgin:"Wetin dey happen?", meaning:"What's going on?", correctIndex:0, options:["What's going on?","When will it happen?","Where is everyone?","Why are you happy?"] },
+  { pidgin:"Na so", meaning:"That's how it is / Exactly", correctIndex:2, options:["Not so","It's a lie","That's how it is","I said no"] },
+  { pidgin:"Shey you dey craze?", meaning:"Are you crazy?", correctIndex:1, options:["Are you leaving?","Are you crazy?","Are you cooking?","Are you sleeping?"] },
+  { pidgin:"E go be", meaning:"It will be fine / It will happen", correctIndex:1, options:["It's over","It will be fine","It was bad","Go away"] },
+  { pidgin:"I dey kampe", meaning:"I'm fine / I'm good", correctIndex:1, options:["I'm camping","I'm fine / I'm good","I'm at the camp","I'm coming"] },
+  { pidgin:"Chop money", meaning:"Spending money / allowance", correctIndex:2, options:["Food budget","Stolen money","Spending money","Big earnings"] },
+  { pidgin:"I go yarn you", meaning:"I'll tell you", correctIndex:1, options:["I'll fight you","I'll tell you","I'll yell at you","I'll find you"] },
+  { pidgin:"Pepper dem", meaning:"Show them / Put them to shame", correctIndex:1, options:["Cook pepper for them","Show them / outdo them","Give them pepper","Sprinkle pepper"] },
+  { pidgin:"Sabi", meaning:"Know / understand / skilled", correctIndex:2, options:["Baby","Sad","Know / understand","Sandal"] },
+  { pidgin:"E choke", meaning:"It's intense / overwhelming (in a good way)", correctIndex:3, options:["It's blocked","It's choking","It's cold","It's intense / impressive"] },
+  { pidgin:"Na you sabi", meaning:"That's your problem / Your choice", correctIndex:1, options:["You're smart","That's your problem","You know best","You're right"] },
+  { pidgin:"Ginger", meaning:"Hype / motivation / energy", correctIndex:1, options:["A type of spice only","To encourage / motivate","To be angry","A red-haired person"] },
+  { pidgin:"I dey find my level", meaning:"I'm looking for opportunities / hustling", correctIndex:1, options:["I'm looking for a level surface","I'm hustling / looking for opportunities","I'm checking my height","I'm lost"] },
+  { pidgin:"Shakara", meaning:"Showing off / playing hard to get", correctIndex:1, options:["A type of dance","Showing off / playing hard to get","Being scared","Shaking"] },
+  { pidgin:"Wahala be like bicycle", meaning:"Problems are everywhere", correctIndex:1, options:["Trouble is like riding a bike","Problems are everywhere","Bicycles cause trouble","Life is a ride"] },
+  { pidgin:"No fall my hand", meaning:"Don't disappoint me", correctIndex:1, options:["Don't drop my hand","Don't disappoint me","Don't hold my hand","Don't fall down"] },
+  { pidgin:"I no send", meaning:"I don't care", correctIndex:2, options:["I didn't send it","I'm not going","I don't care","I'm not sending money"] },
+  { pidgin:"Carry go", meaning:"Continue / Move on / Keep going", correctIndex:1, options:["Carry the bag","Continue / Move on","Pick it up","Go carry it"] },
+  { pidgin:"Body no be firewood", meaning:"I'm human too / I have limits", correctIndex:2, options:["Exercise is important","The body is not wood","I'm human / I have limits","Don't burn me"] },
+  { pidgin:"Omo", meaning:"Exclamation like 'wow' / 'dude' (literally: child)", correctIndex:1, options:["A type of detergent only","An exclamation like 'wow'","Mother","An insult"] },
+  { pidgin:"Jollof no dey ever remain for party", meaning:"Good things finish fast", correctIndex:2, options:["Don't bring jollof to parties","Jollof never runs out","Good things finish fast","Cook more jollof"] },
+  { pidgin:"Dem no born your papa well", meaning:"You're not brave enough (challenge/dare)", correctIndex:1, options:["Your father wasn't born properly","You're a coward / I dare you","Your family is small","Your dad is not strong"] }
+];
+
+// ============================================================
+// SHARED DATA
+// ============================================================
+
+const STATES = [
+  {name:"Abia",code:"AB",zone:"south-east",capital:"Umuahia"},
+  {name:"Adamawa",code:"AD",zone:"north-east",capital:"Yola"},
+  {name:"Akwa Ibom",code:"AK",zone:"south-south",capital:"Uyo"},
+  {name:"Anambra",code:"AN",zone:"south-east",capital:"Awka"},
+  {name:"Bauchi",code:"BA",zone:"north-east",capital:"Bauchi"},
+  {name:"Bayelsa",code:"BY",zone:"south-south",capital:"Yenagoa"},
+  {name:"Benue",code:"BE",zone:"north-central",capital:"Makurdi"},
+  {name:"Borno",code:"BO",zone:"north-east",capital:"Maiduguri"},
+  {name:"Cross River",code:"CR",zone:"south-south",capital:"Calabar"},
+  {name:"Delta",code:"DE",zone:"south-south",capital:"Asaba"},
+  {name:"Ebonyi",code:"EB",zone:"south-east",capital:"Abakaliki"},
+  {name:"Edo",code:"ED",zone:"south-south",capital:"Benin City"},
+  {name:"Ekiti",code:"EK",zone:"south-west",capital:"Ado Ekiti"},
+  {name:"Enugu",code:"EN",zone:"south-east",capital:"Enugu"},
+  {name:"FCT",code:"FC",zone:"north-central",capital:"Abuja"},
+  {name:"Gombe",code:"GO",zone:"north-east",capital:"Gombe"},
+  {name:"Imo",code:"IM",zone:"south-east",capital:"Owerri"},
+  {name:"Jigawa",code:"JI",zone:"north-west",capital:"Dutse"},
+  {name:"Kaduna",code:"KD",zone:"north-west",capital:"Kaduna"},
+  {name:"Kano",code:"KN",zone:"north-west",capital:"Kano"},
+  {name:"Katsina",code:"KT",zone:"north-west",capital:"Katsina"},
+  {name:"Kebbi",code:"KE",zone:"north-west",capital:"Birnin Kebbi"},
+  {name:"Kogi",code:"KO",zone:"north-central",capital:"Lokoja"},
+  {name:"Kwara",code:"KW",zone:"north-central",capital:"Ilorin"},
+  {name:"Lagos",code:"LA",zone:"south-west",capital:"Ikeja"},
+  {name:"Nasarawa",code:"NA",zone:"north-central",capital:"Lafia"},
+  {name:"Niger",code:"NI",zone:"north-central",capital:"Minna"},
+  {name:"Ogun",code:"OG",zone:"south-west",capital:"Abeokuta"},
+  {name:"Ondo",code:"ON",zone:"south-west",capital:"Akure"},
+  {name:"Osun",code:"OS",zone:"south-west",capital:"Osogbo"},
+  {name:"Oyo",code:"OY",zone:"south-west",capital:"Ibadan"},
+  {name:"Plateau",code:"PL",zone:"north-central",capital:"Jos"},
+  {name:"Rivers",code:"RI",zone:"south-south",capital:"Port Harcourt"},
+  {name:"Sokoto",code:"SO",zone:"north-west",capital:"Sokoto"},
+  {name:"Taraba",code:"TA",zone:"north-east",capital:"Jalingo"},
+  {name:"Yobe",code:"YO",zone:"north-east",capital:"Damaturu"},
+  {name:"Zamfara",code:"ZA",zone:"north-west",capital:"Gusau"}
+];
+
+const AGE_TIERS = [
+  { id:"5-7", label:"Explorers", subtitle:"Ages 5–7", emoji:"\u{1F31F}", color:"#FFD166" },
+  { id:"8-12", label:"Discoverers", subtitle:"Ages 8–12", emoji:"\u{1F50D}", color:"#11A87A" },
+  { id:"13-17", label:"Challengers", subtitle:"Ages 13–17", emoji:"⚡", color:"#E85D4A" },
+  { id:"adults", label:"Adults", subtitle:"18+", emoji:"\u{1F3C6}", color:"#F4A900" }
+];
+
+const ZONE_COLORS = {
+  "south-west":"#0A6847","south-south":"#11A87A","south-east":"#06835F",
+  "north-central":"#F4A900","north-west":"#E85D4A","north-east":"#D4443A"
+};
+
+const TONE_STYLES = {
+  fun: { label:"FUN", bg:"rgba(255,209,102,.15)", color:"#FFD166" },
+  funny: { label:"LOL", bg:"rgba(232,93,74,.15)", color:"#E85D4A" },
+  educational: { label:"LEARN", bg:"rgba(17,168,122,.15)", color:"#11A87A" },
+  sarcastic: { label:"SHADE", bg:"rgba(232,93,74,.2)", color:"#E85D4A" },
+  motivational: { label:"INSPIRE", bg:"rgba(244,169,0,.15)", color:"#F4A900" }
+};
+
+const GAMES = [
+  { id:"quiz", title:"66-Second Quiz", emoji:"⚡", desc:"Answer as many as you can before time runs out!", color:"var(--gold)" },
+  { id:"whosaidit", title:"Who Said It?", emoji:"\u{1F4AC}", desc:"Match famous quotes to the Nigerian who said them.", color:"var(--green-light)" },
+  { id:"namestate", title:"Name That State", emoji:"\u{1F5FA}", desc:"Guess the state from its clues and fun facts.", color:"var(--coral)" },
+  { id:"jollof", title:"Jollof or No Jollof", emoji:"\u{1F35A}", desc:"True or false? Wild Nigerian facts — real or cap?", color:"var(--gold-light)" },
+  { id:"pidgin", title:"Pidgin Translator", emoji:"\u{1F5E3}", desc:"What does the Pidgin phrase really mean?", color:"var(--green-bright)" }
+];
+
+// ============================================================
+// PLAYER PROFILE
+// ============================================================
+
+function loadProfile() {
+  try { const s = localStorage.getItem("naija66_profile"); if (s) return JSON.parse(s); } catch(e) {}
+  return null;
+}
+function saveProfile(p) { try { localStorage.setItem("naija66_profile", JSON.stringify(p)); } catch(e) {} }
+function getDefaultProfile() {
+  return { displayName:"", ageTier:null, stateOfOrigin:null, zone:null,
+    totalScore:0, highScore:0, gamesPlayed:0, totalCorrect:0, totalAnswered:0,
+    bestStreak:0, achievements:[], completedZones:[], leadCaptured:false, createdAt:Date.now() };
+}
+
+let profile = loadProfile() || getDefaultProfile();
+
+// ============================================================
+// APP STATE
+// ============================================================
+
+let state = {
+  screen:"landing", ageTier:profile.ageTier, stateOfOrigin:profile.stateOfOrigin,
+  zone:profile.zone, totalScore:profile.totalScore, gamesPlayed:profile.gamesPlayed,
+  selectedZone:null, selectedGame:null, completedZones:profile.completedZones||[],
+  questions:[], currentQ:0, score:0, correct:0, streak:0, bestStreak:0,
+  timeLeft:66, frozen:false, answered:[], timerInterval:null,
+  showStreak:false, streakText:"", lastResult:null, currentShuffled:null
+};
+
+// ============================================================
+// UTILITIES
+// ============================================================
+
+function shuffle(arr) {
+  const a=[...arr]; for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];} return a;
+}
+function shuffleOptions(q) {
+  const idx=q.options.map((_,i)=>i), sh=shuffle(idx);
+  return { options:sh.map(i=>q.options[i]), correctIndex:sh.indexOf(q.correctIndex) };
+}
+
+function checkAchievements() {
+  const a=profile.achievements;
+  if(profile.gamesPlayed>=1&&!a.includes("first_game"))a.push("first_game");
+  if(profile.gamesPlayed>=10&&!a.includes("veteran"))a.push("veteran");
+  if(profile.highScore>=2000&&!a.includes("legend"))a.push("legend");
+  if(profile.bestStreak>=5&&!a.includes("on_fire"))a.push("on_fire");
+  if(profile.bestStreak>=10&&!a.includes("unstoppable"))a.push("unstoppable");
+  if(profile.totalCorrect>=66&&!a.includes("naija_scholar"))a.push("naija_scholar");
+  if(profile.completedZones.length>=2&&!a.includes("explorer"))a.push("explorer");
+  saveProfile(profile);
+}
+
+const ACHIEVEMENT_INFO = {
+  first_game:{emoji:"\u{1F31F}",label:"First Game"}, veteran:{emoji:"\u{1F396}",label:"Veteran (10 games)"},
+  legend:{emoji:"\u{1F451}",label:"Legend (2000+ pts)"}, on_fire:{emoji:"\u{1F525}",label:"On Fire (5 streak)"},
+  unstoppable:{emoji:"⚡",label:"Unstoppable (10 streak)"}, naija_scholar:{emoji:"\u{1F4DA}",label:"Naija Scholar (66 correct)"},
+  explorer:{emoji:"\u{1F5FA}",label:"Explorer (2 zones)"}
+};
+
+// ============================================================
+// RENDER ENGINE
+// ============================================================
+
+const $=document.getElementById.bind(document);
+const app=document.getElementById("app");
+
+function render() {
+  const gameScreens=["game-play","game-play-quote","game-play-state","game-play-jollof","game-play-pidgin"];
+  if(!gameScreens.includes(state.screen)&&state.timerInterval){clearInterval(state.timerInterval);state.timerInterval=null;}
+  const fn={
+    "landing":renderLanding,"profile-setup":renderProfileSetup,"profile-view":renderProfileView,
+    "age-select":renderAgeSelect,"state-select":renderStateSelect,"map-hub":renderMapHub,
+    "game-select":renderGameSelect,"game-intro":renderGameIntro,
+    "game-play":renderGamePlay,"game-play-quote":renderGamePlayQuote,
+    "game-play-state":renderGamePlayState,"game-play-jollof":renderGamePlayJollof,
+    "game-play-pidgin":renderGamePlayPidgin,
+    "game-result":renderGameResult,"real-story":renderRealStory,"pride-card":renderPrideCard
+  };
+  if(fn[state.screen])fn[state.screen]();
+  setupGazeAfterRender();
+}
+
+// ============================================================
+// LANDING
+// ============================================================
+
+function renderLanding() {
+  const hp=profile.displayName;
+  const badge=hp?`<button onclick="go('profile-view')" class="profile-badge fade-up" style="position:absolute;top:24px;right:0;z-index:2">
+    <div style="width:36px;height:36px;border-radius:12px;overflow:hidden;flex-shrink:0">${avatar(profile.displayName, 36)}</div>
+    <div style="text-align:left"><div style="font-weight:600;font-size:13px">${profile.displayName}</div><div style="color:var(--gold);font-size:11px;font-weight:600">${profile.totalScore.toLocaleString()} pts</div></div>
+  </button>`:'';
+  app.innerHTML=`
+    <div class="screen" style="align-items:center;justify-content:center;text-align:center;position:relative">
+      ${badge}
+      <div style="position:absolute;inset:0;pointer-events:none;overflow:hidden">
+        <div style="position:absolute;top:-60px;right:-40px;width:200px;height:200px;border-radius:50%;background:radial-gradient(circle,rgba(244,169,0,.12),transparent 70%);animation:float 6s ease-in-out infinite"></div>
+        <div style="position:absolute;bottom:-30px;left:-50px;width:180px;height:180px;border-radius:50%;background:radial-gradient(circle,rgba(17,168,122,.1),transparent 70%);animation:float 8s ease-in-out infinite 2s"></div>
+      </div>
+      <div style="position:relative;z-index:1;max-width:380px">
+        <div class="fade-up" style="margin-bottom:8px;position:relative;display:inline-block">
+          <div style="animation:pulseGlow 3s ease-in-out infinite"><span class="display" style="font-weight:800;font-size:120px;line-height:1;color:var(--gold);opacity:.9">66</span></div>
+          <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:140px;height:140px;border-radius:50%;border:2px solid rgba(244,169,0,.15);animation:spinSlow 30s linear infinite"></div>
+        </div>
+        <h1 class="display fade-up fade-up-d1" style="font-weight:700;font-size:36px;color:var(--cream);margin-bottom:12px;text-wrap:balance">Naija 66</h1>
+        <p class="fade-up fade-up-d2" style="color:rgba(255,248,240,.6);font-size:18px;margin-bottom:8px;line-height:1.5">Celebrate Nigeria's 66th Independence Day through play.</p>
+        <p class="fade-up fade-up-d3" style="color:rgba(255,248,240,.4);font-size:14px;margin-bottom:40px;line-height:1.5;max-width:280px;margin-inline:auto">5 games. 66 questions. One nation.<br>Discover the real stories behind Nigeria's proudest moments.</p>
+        <div class="fade-up fade-up-d4">
+          <button class="btn-gold" style="font-size:20px;padding:20px 48px" onclick="${hp?"go('map-hub')":"go('profile-setup')"}">${hp?'Play Now':'Get Started'}</button>
+        </div>
+        ${hp?`<div class="glass fade-up fade-up-d5" style="margin-top:32px;padding:16px 24px;display:flex;align-items:center;justify-content:center;gap:20px">
+          <div style="text-align:center"><div class="display" style="font-weight:700;font-size:20px;color:var(--gold)">${profile.gamesPlayed}</div><div style="color:rgba(255,248,240,.4);font-size:11px">games</div></div>
+          <div style="width:1px;height:30px;background:rgba(255,248,240,.1)"></div>
+          <div style="text-align:center"><div class="display" style="font-weight:700;font-size:20px;color:var(--green-light)">${profile.highScore}</div><div style="color:rgba(255,248,240,.4);font-size:11px">best score</div></div>
+          <div style="width:1px;height:30px;background:rgba(255,248,240,.1)"></div>
+          <div style="text-align:center"><div class="display" style="font-weight:700;font-size:20px;color:var(--coral)">${profile.bestStreak}</div><div style="color:rgba(255,248,240,.4);font-size:11px">best streak</div></div>
+        </div>`:''}
+      </div>
+      <div style="position:absolute;bottom:60px;left:0;right:0;display:flex;height:4px;opacity:.35"><div style="flex:1;background:var(--green-light)"></div><div style="flex:1;background:var(--cream)"></div><div style="flex:1;background:var(--green-light)"></div></div>
+      <div style="position:absolute;bottom:24px;text-align:center;width:100%"><span style="color:rgba(255,248,240,.25);font-size:12px">A Boost Nation project · October 1, 2026</span></div>
+    </div>`;
+}
+
+// ============================================================
+// PROFILE SETUP / VIEW
+// ============================================================
+
+function renderProfileSetup() {
+  app.innerHTML=`<div class="screen" style="align-items:center;justify-content:center">
+    <div style="max-width:380px;width:100%;text-align:center">
+      <div class="fade-up" style="font-size:48px;margin-bottom:16px">\u{1F1F3}\u{1F1EC}</div>
+      <h1 class="display fade-up fade-up-d1" style="font-weight:700;font-size:28px;margin-bottom:8px">Welcome, Champion</h1>
+      <p class="fade-up fade-up-d2" style="color:rgba(255,248,240,.5);margin-bottom:32px">What should we call you?</p>
+      <input id="nameInput" type="text" placeholder="Your display name" maxlength="20" autofocus
+        style="width:100%;padding:16px 24px;border-radius:16px;background:var(--glass-bg);border:2px solid var(--glass-border);color:var(--cream);font-size:18px;outline:none;text-align:center;font-weight:500" class="fade-up fade-up-d3"
+        onkeydown="if(event.key==='Enter')submitName()">
+      <div class="fade-up fade-up-d4" style="margin-top:24px"><button class="btn-gold" style="width:100%" onclick="submitName()">Continue</button></div>
+    </div></div>`;
+  setTimeout(()=>{const i=$("nameInput");if(i)i.focus();},300);
+}
+function submitName(){const i=$("nameInput"),n=(i?.value||"").trim();if(!n)return;profile.displayName=n;saveProfile(profile);go("age-select");}
+
+function renderProfileView() {
+  const acc=profile.totalAnswered>0?Math.round((profile.totalCorrect/profile.totalAnswered)*100):0;
+  const ach=profile.achievements.map(a=>{const i=ACHIEVEMENT_INFO[a];return i?`<div class="glass" style="padding:10px 14px;display:flex;align-items:center;gap:8px;border-radius:12px"><span style="font-size:20px">${i.emoji}</span><span style="font-size:13px;font-weight:500">${i.label}</span></div>`:'';}).join('');
+  app.innerHTML=`<div class="screen">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:32px">
+      <button style="color:rgba(255,248,240,.5);font-size:14px" onclick="go('landing')">← Back</button>
+      <button style="color:var(--coral);font-size:13px;font-weight:600" onclick="resetProfile()">Reset</button>
+    </div>
+    <div class="fade-up" style="text-align:center;margin-bottom:32px">
+      <div style="width:80px;height:80px;border-radius:20px;overflow:hidden;margin:0 auto 16px;box-shadow:0 0 24px rgba(244,169,0,.2)">${avatar(profile.displayName, 80)}</div>
+      <h1 class="display" style="font-weight:700;font-size:28px">${profile.displayName}</h1>
+      <p style="color:rgba(255,248,240,.4);font-size:14px;margin-top:4px">${profile.stateOfOrigin?profile.stateOfOrigin+' State':'No state selected'}</p>
+    </div>
+    <div class="fade-up fade-up-d1" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-bottom:24px">
+      <div class="glass" style="padding:16px 12px;text-align:center"><div class="display" style="font-weight:700;font-size:24px;color:var(--gold)">${profile.totalScore.toLocaleString()}</div><div style="color:rgba(255,248,240,.4);font-size:11px;margin-top:4px">total points</div></div>
+      <div class="glass" style="padding:16px 12px;text-align:center"><div class="display" style="font-weight:700;font-size:24px;color:var(--green-light)">${profile.gamesPlayed}</div><div style="color:rgba(255,248,240,.4);font-size:11px;margin-top:4px">games played</div></div>
+      <div class="glass" style="padding:16px 12px;text-align:center"><div class="display" style="font-weight:700;font-size:24px;color:var(--coral)">${acc}%</div><div style="color:rgba(255,248,240,.4);font-size:11px;margin-top:4px">accuracy</div></div>
+    </div>
+    <div class="glass fade-up fade-up-d2" style="padding:16px 20px;margin-bottom:24px;display:flex;align-items:center;justify-content:space-between">
+      <div><div style="color:rgba(255,248,240,.5);font-size:12px;margin-bottom:2px">Best Single Game</div><div class="display" style="font-weight:700;font-size:20px;color:var(--gold)">${profile.highScore.toLocaleString()} pts</div></div>
+      <div style="text-align:right"><div style="color:rgba(255,248,240,.5);font-size:12px;margin-bottom:2px">Best Streak</div><div class="display" style="font-weight:700;font-size:20px;color:var(--coral)">${profile.bestStreak} \u{1F525}</div></div>
+    </div>
+    ${profile.achievements.length>0?`<div class="fade-up fade-up-d3"><h2 class="display" style="font-weight:600;font-size:18px;margin-bottom:12px">Achievements</h2><div style="display:flex;flex-wrap:wrap;gap:8px">${ach}</div></div>`:''}
+  </div>`;
+}
+function resetProfile(){profile=getDefaultProfile();saveProfile(profile);state.totalScore=0;state.gamesPlayed=0;state.completedZones=[];try{localStorage.removeItem("naija66_leads");}catch(e){}go("landing");}
+
+// ============================================================
+// AGE & STATE SELECT
+// ============================================================
+
+function renderAgeSelect() {
+  const tiles=AGE_TIERS.map(t=>`<button onclick="selectAge('${t.id}')" style="border-radius:24px;padding:24px;text-align:left;transition:transform .15s;background:${t.color}18;border:2px solid ${t.color}40" onmousedown="this.style.transform='scale(.95)'" onmouseup="this.style.transform=''" onmouseleave="this.style.transform=''">
+    <div style="font-size:36px;margin-bottom:12px">${t.emoji}</div>
+    <div class="display" style="font-weight:700;font-size:20px;color:${t.color};margin-bottom:4px">${t.label}</div>
+    <div style="color:rgba(255,248,240,.5);font-size:14px">${t.subtitle}</div>
+  </button>`).join("");
+  app.innerHTML=`<div class="screen">
+    <button class="back-btn" onclick="go('landing')">← Back</button>
+    <h1 class="display fade-up" style="font-weight:700;font-size:30px;margin-bottom:8px">Who's playing?</h1>
+    <p class="fade-up fade-up-d1" style="color:rgba(255,248,240,.5);margin-bottom:40px">Pick your age group.</p>
+    <div class="fade-up fade-up-d2" style="display:grid;grid-template-columns:1fr 1fr;gap:16px">${tiles}</div>
+  </div>`;
+}
+function selectAge(id){state.ageTier=id;profile.ageTier=id;saveProfile(profile);go("state-select");}
+
+function renderStateSelect() {
+  app.innerHTML=`<div class="screen">
+    <button class="back-btn" onclick="go('age-select')">← Back</button>
+    <h1 class="display fade-up" style="font-weight:700;font-size:30px;margin-bottom:8px">Which state is home?</h1>
+    <p class="fade-up fade-up-d1" style="color:rgba(255,248,240,.5);margin-bottom:24px">In the diaspora? Pick the state your family is from.</p>
+    <input id="stateSearch" type="text" placeholder="Search states..." oninput="filterStates()"
+      style="width:100%;padding:12px 20px;border-radius:16px;background:var(--glass-bg);border:1px solid var(--glass-border);color:var(--cream);font-size:16px;outline:none;margin-bottom:24px" class="fade-up fade-up-d2">
+    <div id="stateGrid" class="state-grid fade-up fade-up-d3" style="display:grid;grid-template-columns:1fr 1fr;gap:8px;overflow-y:auto;max-height:55dvh;padding-bottom:16px"></div>
+  </div>`;
+  filterStates();
+}
+function filterStates(){const q=($("stateSearch")?.value||"").toLowerCase();const f=STATES.filter(s=>s.name.toLowerCase().includes(q));const g=$("stateGrid");if(!g)return;g.innerHTML=f.map(s=>`<button onclick="selectState('${s.name}')" class="glass" style="padding:12px 16px;text-align:left;transition:all .15s;border-radius:12px"><div style="font-weight:600;font-size:14px">${s.name}</div><div style="color:rgba(255,248,240,.3);font-size:12px">${s.capital}</div></button>`).join("");}
+function selectState(name){const st=STATES.find(s=>s.name===name);if(st){state.stateOfOrigin=st.name;state.zone=st.zone;profile.stateOfOrigin=st.name;profile.zone=st.zone;saveProfile(profile);go("map-hub");}}
+
+// ============================================================
+// MAP HUB
+// ============================================================
+
+function renderMapHub() {
+  const zones=["south-west","south-south","south-east","north-central","north-west","north-east"];
+  const legend=zones.map(z=>{const l=z.split("-").map(w=>w[0].toUpperCase()+w.slice(1)).join(" ");const c=state.completedZones.includes(z);return`<span style="display:inline-block;padding:4px 12px;border-radius:999px;font-size:12px;color:var(--cream);font-weight:600;background:${c?'rgba(17,168,122,.3)':'rgba(255,248,240,.08)'}">${c?'✓ ':''}${l}</span>`;}).join("");
+  app.innerHTML=`<div class="screen">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px">
+      <button style="color:rgba(255,248,240,.5);font-size:13px;font-weight:600" onclick="go('landing')">← Home</button>
+      <div class="display" style="font-weight:700;font-size:15px;color:var(--gold)">Naija 66</div>
+    </div>
+    <div class="glass fade-up" style="padding:10px 16px;margin-bottom:24px;display:flex;align-items:center;gap:10px;font-size:12px">
+      <div style="width:28px;height:28px;border-radius:8px;overflow:hidden;flex-shrink:0">${avatar(profile.displayName, 28)}</div>
+      <span style="color:var(--green-light);font-weight:600;flex:1">${profile.displayName||'Player'}</span>
+      <span style="color:rgba(255,248,240,.4)">${state.stateOfOrigin} · ${profile.totalScore.toLocaleString()} pts</span>
+    </div>
+    <div class="fade-up fade-up-d1" style="flex:1;display:flex;align-items:center;justify-content:center">${renderNigeriaMap()}</div>
+    <div class="fade-up fade-up-d2" style="margin-top:24px">
+      <div style="color:rgba(255,248,240,.4);font-size:12px;margin-bottom:12px">Tap any zone to play</div>
+      <div style="display:flex;flex-wrap:wrap;gap:8px">${legend}</div>
+    </div>
+    <div class="glass fade-up fade-up-d3" style="margin-top:24px;padding:20px;text-align:center">
+      <div style="color:rgba(255,248,240,.4);font-size:12px;margin-bottom:4px">Your Journey</div>
+      <div class="display" style="font-weight:700;font-size:20px;color:var(--gold)">${state.completedZones.length} / 6 zones explored</div>
+      <div style="width:100%;height:8px;border-radius:4px;background:rgba(255,248,240,.05);margin-top:12px;overflow:hidden"><div style="height:100%;border-radius:4px;background:var(--gold);transition:width .5s;width:${(state.completedZones.length/6)*100}%"></div></div>
+    </div>
+  </div>`;
+}
+
+function renderNigeriaMap() {
+  return `<svg viewBox="0 0 400 380" style="width:100%;max-width:400px" role="img" aria-label="Map of Nigeria">
+    <defs>
+      <filter id="glow"><feGaussianBlur stdDeviation="4" result="g"/><feMerge><feMergeNode in="g"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+      <linearGradient id="grad-sw" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#0A6847"/><stop offset="100%" stop-color="#06835F"/></linearGradient>
+      <linearGradient id="grad-ss" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#11A87A"/><stop offset="100%" stop-color="#0A6847"/></linearGradient>
+      <linearGradient id="grad-se" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#06835F"/><stop offset="100%" stop-color="#11A87A"/></linearGradient>
+      <linearGradient id="grad-nc" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#F4A900"/><stop offset="100%" stop-color="#FFD166"/></linearGradient>
+      <linearGradient id="grad-nw" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#E85D4A"/><stop offset="100%" stop-color="#D4443A"/></linearGradient>
+      <linearGradient id="grad-ne" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#D4443A"/><stop offset="100%" stop-color="#E85D4A"/></linearGradient>
+    </defs>
+    <path class="zone-path active" onclick="clickZone('north-west')" d="M60,40 L160,30 L170,80 L155,120 L100,130 L50,110 Z" fill="url(#grad-nw)" filter="url(#glow)"/>
+    <text x="105" y="80" fill="var(--cream)" font-size="12" text-anchor="middle" font-weight="600" font-family="Plus Jakarta Sans" style="pointer-events:none">NW</text>
+    <path class="zone-path active" onclick="clickZone('north-east')" d="M170,30 L300,25 L340,80 L310,140 L240,130 L170,80 Z" fill="url(#grad-ne)" filter="url(#glow)"/>
+    <text x="250" y="80" fill="var(--cream)" font-size="12" text-anchor="middle" font-weight="600" font-family="Plus Jakarta Sans" style="pointer-events:none">NE</text>
+    <path class="zone-path active" onclick="clickZone('north-central')" d="M100,130 L155,120 L240,130 L250,190 L200,220 L130,210 L80,170 Z" fill="url(#grad-nc)" filter="url(#glow)"/>
+    <text x="170" y="175" fill="var(--charcoal)" font-size="12" text-anchor="middle" font-weight="600" font-family="Plus Jakarta Sans" style="pointer-events:none">NC</text>
+    <path class="zone-path active" onclick="clickZone('south-west')" d="M50,200 L130,210 L140,260 L110,290 L40,280 L30,240 Z" fill="url(#grad-sw)" filter="url(#glow)"/>
+    <text x="85" y="252" fill="var(--cream)" font-size="12" text-anchor="middle" font-weight="600" font-family="Plus Jakarta Sans" style="pointer-events:none">SW</text>
+    <path class="zone-path active" onclick="clickZone('south-south')" d="M140,260 L200,250 L250,280 L260,330 L200,350 L140,330 L110,290 Z" fill="url(#grad-ss)" filter="url(#glow)"/>
+    <text x="190" y="305" fill="var(--cream)" font-size="12" text-anchor="middle" font-weight="600" font-family="Plus Jakarta Sans" style="pointer-events:none">SS</text>
+    <path class="zone-path active" onclick="clickZone('south-east')" d="M200,220 L250,190 L300,220 L290,270 L250,280 L200,250 Z" fill="url(#grad-se)" filter="url(#glow)"/>
+    <text x="250" y="245" fill="var(--cream)" font-size="12" text-anchor="middle" font-weight="600" font-family="Plus Jakarta Sans" style="pointer-events:none">SE</text>
+  </svg>`;
+}
+
+function clickZone(zone){state.selectedZone=zone;go("game-select");}
+
+// ============================================================
+// GAME SELECT — pick which game to play
+// ============================================================
+
+function renderGameSelect() {
+  const zoneLabel=state.selectedZone.split("-").map(w=>w[0].toUpperCase()+w.slice(1)).join(" ");
+  const tiles=GAMES.map((g,i)=>`
+    <button class="game-tile fade-up" style="animation-delay:${i*.08}s" onclick="selectGame('${g.id}')">
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:8px">
+        <span style="font-size:28px">${g.emoji}</span>
+        <div class="display" style="font-weight:700;font-size:18px;color:${g.color}">${g.title}</div>
+      </div>
+      <p style="color:rgba(255,248,240,.5);font-size:14px;line-height:1.4">${g.desc}</p>
+    </button>
+  `).join("");
+  app.innerHTML=`<div class="screen">
+    <button class="back-btn" onclick="state.selectedZone=null;go('map-hub')">← Back to Map</button>
+    <h1 class="display fade-up" style="font-weight:700;font-size:28px;margin-bottom:8px">Choose Your Game</h1>
+    <p class="fade-up fade-up-d1" style="color:rgba(255,248,240,.5);font-size:14px;margin-bottom:28px">Playing from ${zoneLabel} zone</p>
+    <div style="display:flex;flex-direction:column;gap:12px">${tiles}</div>
+  </div>`;
+}
+function selectGame(id){state.selectedGame=id;go("game-intro");}
+
+// ============================================================
+// GAME INTRO (shared for all games)
+// ============================================================
+
+function renderGameIntro() {
+  const g=GAMES.find(x=>x.id===state.selectedGame)||GAMES[0];
+  const rules = {
+    quiz:"Answer as many questions as you can in 66 seconds.\nWrong answers freeze the clock for 3 seconds.\nStreaks earn bonus points!",
+    whosaidit:"You'll see a famous quote — pick who said it.\n66 seconds on the clock. Quick thinking required!",
+    namestate:"We give you clues about a Nigerian state.\nYou guess which state it is. 66 seconds!",
+    jollof:"We show you a statement about Nigeria.\nIs it TRUE or FALSE? Tap fast!",
+    pidgin:"We show you a Pidgin phrase.\nPick the correct English meaning!"
+  };
+  app.innerHTML=`<div class="screen" style="align-items:center;justify-content:center">
+    <button class="back-btn" onclick="go('game-select')" style="position:absolute;top:24px;left:16px">← Back</button>
+    <div style="text-align:center;max-width:360px">
+      <div class="fade-up" style="font-size:60px;margin-bottom:24px">${g.emoji}</div>
+      <h1 class="display fade-up fade-up-d1" style="font-weight:700;font-size:28px;margin-bottom:16px;text-wrap:balance;color:${g.color}">${g.title}</h1>
+      <p class="fade-up fade-up-d2" style="color:rgba(255,248,240,.4);font-size:14px;margin-bottom:40px;line-height:1.7;white-space:pre-line">${rules[g.id]}</p>
+      <button class="btn-gold fade-up fade-up-d3" style="font-size:20px;padding:20px 48px" onclick="startGame()">Start — 66 seconds</button>
+    </div>
+  </div>`;
+}
+
+// ============================================================
+// GAME ENGINE (shared timer + scoring)
+// ============================================================
+
+function startGame() {
+  state.currentQ=0; state.score=0; state.correct=0; state.streak=0; state.bestStreak=0;
+  state.timeLeft=66; state.frozen=false; state.answered=[]; state.showStreak=false;
+
+  const gid=state.selectedGame||"quiz";
+  if(gid==="quiz"){state.questions=shuffle(QUESTIONS);go("game-play");}
+  else if(gid==="whosaidit"){state.questions=shuffle(QUOTES);go("game-play-quote");}
+  else if(gid==="namestate"){state.questions=shuffle(STATE_CLUES);go("game-play-state");}
+  else if(gid==="jollof"){state.questions=shuffle(JOLLOF_FACTS);go("game-play-jollof");}
+  else if(gid==="pidgin"){state.questions=shuffle(PIDGIN_PHRASES);go("game-play-pidgin");}
+
+  state.timerInterval=setInterval(()=>{
+    if(!state.frozen){state.timeLeft=Math.max(0,state.timeLeft-1);updateTimerUI();if(state.timeLeft<=0)endGame();}
+  },1000);
+}
+
+function updateTimerUI(){
+  const el=$("timerText"),ring=$("timerRing"),bar=$("progressBar");
+  if(el){el.textContent=state.timeLeft;if(state.timeLeft<=10){el.style.color="var(--coral)";el.style.animation="countPulse .5s ease-out";setTimeout(()=>{if(el)el.style.animation="";},500);}}
+  if(ring){const p=state.timeLeft/66;ring.style.strokeDashoffset=283*(1-p);ring.style.stroke=state.timeLeft<=10?"var(--coral)":state.frozen?"rgba(255,248,240,.2)":"var(--gold)";}
+  if(bar){bar.style.width=((state.timeLeft/66)*100)+"%";bar.style.background=state.timeLeft<=10?"var(--coral)":"var(--gold)";}
+}
+
+function gameHeader(){
+  return `<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px">
+    <button class="back-btn" style="margin:0" onclick="endGame()">✕</button>
+    <div style="display:flex;align-items:center;gap:12px">
+      <div class="display" style="font-weight:700;font-size:14px;color:var(--gold)">${state.score} pts</div>
+      ${state.streak>=2?`<div style="padding:4px 10px;border-radius:999px;background:rgba(244,169,0,.2);font-size:12px;font-weight:600;color:var(--gold)">\u{1F525} ${state.streak}</div>`:''}
+    </div>
+  </div>
+  <div style="display:flex;align-items:center;justify-content:center;margin-bottom:20px;position:relative">
+    <svg width="80" height="80" viewBox="0 0 100 100" style="transform:rotate(-90deg)">
+      <circle cx="50" cy="50" r="45" fill="none" stroke="rgba(255,248,240,.08)" stroke-width="6"/>
+      <circle id="timerRing" cx="50" cy="50" r="45" fill="none" stroke="var(--gold)" stroke-width="6" class="timer-ring" stroke-linecap="round" style="stroke-dashoffset:${283*(1-state.timeLeft/66)}"/>
+    </svg>
+    <div id="timerText" class="display" style="position:absolute;font-weight:700;font-size:28px;color:${state.timeLeft<=10?'var(--coral)':'var(--cream)'}">${state.timeLeft}</div>
+  </div>
+  <div style="width:100%;height:4px;border-radius:2px;background:rgba(255,248,240,.08);margin-bottom:20px;overflow:hidden">
+    <div id="progressBar" style="height:100%;border-radius:2px;background:var(--gold);transition:width .3s;width:${(state.timeLeft/66)*100}%"></div>
+  </div>
+  ${state.frozen?'<div style="text-align:center;color:var(--coral);font-weight:600;font-size:14px;margin-bottom:16px;animation:shake .3s">⏸ Clock frozen — 3s penalty</div>':''}`;
+}
+
+function handleCorrect(extraData){
+  state.streak++;state.bestStreak=Math.max(state.bestStreak,state.streak);
+  let pts=100;
+  if(state.streak>=5){pts=300;state.streakText="\u{1F525} ON FIRE! +300";}
+  else if(state.streak>=3){pts=200;state.streakText="\u{1F525} Streak x"+state.streak+"! +200";}
+  else{state.streakText="";}
+  state.score+=pts;state.correct++;
+  if(state.streak>=3){state.showStreak=true;setTimeout(()=>{state.showStreak=false;},1200);}
+}
+function handleWrong(){state.streak=0;state.frozen=true;setTimeout(()=>{state.frozen=false;advanceQuestion();},3000);}
+
+function advanceQuestion(){
+  state.currentQ++;
+  if(state.currentQ>=state.questions.length){state.questions=shuffle(state.questions);state.currentQ=0;}
+  render();
+}
+
+// ============================================================
+// GAME 1: 66-Second Quiz
+// ============================================================
+
+function renderGamePlay() {
+  if(state.currentQ>=state.questions.length){state.questions=shuffle(QUESTIONS);state.currentQ=0;}
+  const q=state.questions[state.currentQ],qNum=state.answered.length+1;
+  const tone=TONE_STYLES[q.tone]||TONE_STYLES.fun;
+  const sh=shuffleOptions(q);state.currentShuffled=sh;
+  app.innerHTML=`<div class="screen" style="padding-top:16px">
+    ${gameHeader()}
+    <div style="flex:1;display:flex;flex-direction:column;justify-content:center">
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px">
+        <span style="color:rgba(255,248,240,.4);font-size:13px">Question ${qNum}</span>
+        <span class="tone-badge" style="background:${tone.bg};color:${tone.color}">${tone.label}</span>
+      </div>
+      <h2 class="display" style="font-weight:600;font-size:20px;line-height:1.4;margin-bottom:28px;text-wrap:balance">${q.question}</h2>
+      <div id="optionsArea" style="display:flex;flex-direction:column;gap:12px">
+        ${sh.options.map((o,i)=>`<button class="opt-btn" id="opt${i}" onclick="answerQuiz(${i})">${o}</button>`).join("")}
+      </div>
+    </div>
+  </div>${state.showStreak?`<div class="streak-badge">${state.streakText}</div>`:''}`;
+}
+
+function answerQuiz(idx){
+  if(state.frozen)return;
+  const q=state.questions[state.currentQ],ci=state.currentShuffled.correctIndex,ok=idx===ci;
+  const btns=document.querySelectorAll(".opt-btn");
+  btns.forEach((b,i)=>{b.disabled=true;if(i===ci)b.classList.add("correct");if(i===idx&&!ok)b.classList.add("wrong");});
+  state.answered.push({question:q,correct:ok,chosen:idx});
+  if(ok){handleCorrect();setTimeout(()=>advanceQuestion(),600);}
+  else handleWrong();
+}
+
+// ============================================================
+// GAME 2: Who Said It?
+// ============================================================
+
+function renderGamePlayQuote(){
+  if(state.currentQ>=state.questions.length){state.questions=shuffle(QUOTES);state.currentQ=0;}
+  const q=state.questions[state.currentQ],qNum=state.answered.length+1;
+  const ci=q.options.indexOf(q.person);
+  const sh=shuffleOptions({options:q.options,correctIndex:ci});state.currentShuffled=sh;
+  app.innerHTML=`<div class="screen" style="padding-top:16px">
+    ${gameHeader()}
+    <div style="flex:1;display:flex;flex-direction:column;justify-content:center">
+      <div style="color:rgba(255,248,240,.4);font-size:13px;margin-bottom:12px">Quote ${qNum} — Who said this?</div>
+      <div class="quote-card" style="margin-bottom:28px">“${q.quote}”</div>
+      <div style="display:flex;flex-direction:column;gap:12px">
+        ${sh.options.map((o,i)=>`<button class="opt-btn" onclick="answerQuote(${i})">${o}</button>`).join("")}
+      </div>
+    </div>
+  </div>${state.showStreak?`<div class="streak-badge">${state.streakText}</div>`:''}`;
+}
+
+function answerQuote(idx){
+  if(state.frozen)return;
+  const q=state.questions[state.currentQ],ci=state.currentShuffled.correctIndex,ok=idx===ci;
+  const btns=document.querySelectorAll(".opt-btn");
+  btns.forEach((b,i)=>{b.disabled=true;if(i===ci)b.classList.add("correct");if(i===idx&&!ok)b.classList.add("wrong");});
+  state.answered.push({question:{question:'Who said: "'+q.quote+'"',realStory:{fact:q.fact,date:"",source:""}},correct:ok});
+  if(ok){handleCorrect();setTimeout(()=>advanceQuestion(),600);}
+  else handleWrong();
+}
+
+// ============================================================
+// GAME 3: Name That State
+// ============================================================
+
+function renderGamePlayState(){
+  if(state.currentQ>=state.questions.length){state.questions=shuffle(STATE_CLUES);state.currentQ=0;}
+  const q=state.questions[state.currentQ],qNum=state.answered.length+1;
+  // Pick random clue to show
+  const clue=q.clues[Math.floor(Math.random()*q.clues.length)];
+  // Build 4 options: correct + 3 random wrong states
+  const others=shuffle(STATE_CLUES.filter(s=>s.state!==q.state)).slice(0,3).map(s=>s.state);
+  const opts=shuffle([q.state,...others]);
+  const ci=opts.indexOf(q.state);
+  state.currentShuffled={options:opts,correctIndex:ci};
+  app.innerHTML=`<div class="screen" style="padding-top:16px">
+    ${gameHeader()}
+    <div style="flex:1;display:flex;flex-direction:column;justify-content:center">
+      <div style="color:rgba(255,248,240,.4);font-size:13px;margin-bottom:12px">State ${qNum} — Name that state!</div>
+      <div class="glass" style="padding:24px;margin-bottom:28px;text-align:center">
+        <div style="font-size:32px;margin-bottom:12px">\u{1F5FA}</div>
+        <p class="display" style="font-weight:600;font-size:18px;line-height:1.5;color:var(--cream)">${clue}</p>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+        ${opts.map((o,i)=>`<button class="opt-btn" style="text-align:center" onclick="answerState(${i})">${o}</button>`).join("")}
+      </div>
+    </div>
+  </div>${state.showStreak?`<div class="streak-badge">${state.streakText}</div>`:''}`;
+}
+
+function answerState(idx){
+  if(state.frozen)return;
+  const q=state.questions[state.currentQ],ci=state.currentShuffled.correctIndex,ok=idx===ci;
+  const btns=document.querySelectorAll(".opt-btn");
+  btns.forEach((b,i)=>{b.disabled=true;if(i===ci)b.classList.add("correct");if(i===idx&&!ok)b.classList.add("wrong");});
+  state.answered.push({question:{question:"Which state? Clue shown.",realStory:{fact:q.clues.join(". "),date:"",source:"Nigerian Geography"}},correct:ok});
+  if(ok){handleCorrect();setTimeout(()=>advanceQuestion(),600);}
+  else handleWrong();
+}
+
+// ============================================================
+// GAME 4: Jollof or No Jollof (True/False)
+// ============================================================
+
+function renderGamePlayJollof(){
+  if(state.currentQ>=state.questions.length){state.questions=shuffle(JOLLOF_FACTS);state.currentQ=0;}
+  const q=state.questions[state.currentQ],qNum=state.answered.length+1;
+  app.innerHTML=`<div class="screen" style="padding-top:16px">
+    ${gameHeader()}
+    <div style="flex:1;display:flex;flex-direction:column;justify-content:center">
+      <div style="color:rgba(255,248,240,.4);font-size:13px;margin-bottom:12px">Fact ${qNum} — Jollof or No Jollof?</div>
+      <div class="glass" style="padding:28px;margin-bottom:32px;text-align:center">
+        <p class="display" style="font-weight:600;font-size:20px;line-height:1.5;text-wrap:balance">${q.statement}</p>
+      </div>
+      <div style="display:flex;gap:16px">
+        <button class="tf-btn tf-true" onclick="answerJollof(true)">\u{1F35A} Jollof!<br><span style="font-size:12px;font-weight:400;opacity:.6">True</span></button>
+        <button class="tf-btn tf-false" onclick="answerJollof(false)">\u{1F645} No Jollof<br><span style="font-size:12px;font-weight:400;opacity:.6">False</span></button>
+      </div>
+    </div>
+  </div>${state.showStreak?`<div class="streak-badge">${state.streakText}</div>`:''}`;
+}
+
+function answerJollof(guess){
+  if(state.frozen)return;
+  const q=state.questions[state.currentQ],ok=guess===q.isTrue;
+  const btns=document.querySelectorAll(".tf-btn");
+  btns.forEach(b=>b.disabled=true);
+  if(guess){btns[0].classList.add(ok?"picked-right":"picked-wrong");}
+  else{btns[1].classList.add(ok?"picked-right":"picked-wrong");}
+  state.answered.push({question:{question:q.statement,realStory:{fact:q.explanation,date:"",source:""}},correct:ok});
+  if(ok){handleCorrect();setTimeout(()=>advanceQuestion(),600);}
+  else handleWrong();
+}
+
+// ============================================================
+// GAME 5: Pidgin Translator
+// ============================================================
+
+function renderGamePlayPidgin(){
+  if(state.currentQ>=state.questions.length){state.questions=shuffle(PIDGIN_PHRASES);state.currentQ=0;}
+  const q=state.questions[state.currentQ],qNum=state.answered.length+1;
+  const ci=q.correctIndex!==undefined?q.correctIndex:q.options.indexOf(q.meaning);
+  const sh=shuffleOptions({options:q.options,correctIndex:ci});state.currentShuffled=sh;
+  app.innerHTML=`<div class="screen" style="padding-top:16px">
+    ${gameHeader()}
+    <div style="flex:1;display:flex;flex-direction:column;justify-content:center">
+      <div style="color:rgba(255,248,240,.4);font-size:13px;margin-bottom:12px">Phrase ${qNum} — What does this mean?</div>
+      <div class="glass" style="padding:28px;margin-bottom:28px;text-align:center">
+        <div style="color:rgba(255,248,240,.4);font-size:12px;margin-bottom:8px;letter-spacing:1px">PIDGIN</div>
+        <p class="display" style="font-weight:700;font-size:28px;color:var(--green-light);line-height:1.3">“${q.pidgin}”</p>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:12px">
+        ${sh.options.map((o,i)=>`<button class="opt-btn" onclick="answerPidgin(${i})">${o}</button>`).join("")}
+      </div>
+    </div>
+  </div>${state.showStreak?`<div class="streak-badge">${state.streakText}</div>`:''}`;
+}
+
+function answerPidgin(idx){
+  if(state.frozen)return;
+  const q=state.questions[state.currentQ],ci=state.currentShuffled.correctIndex,ok=idx===ci;
+  const btns=document.querySelectorAll(".opt-btn");
+  btns.forEach((b,i)=>{b.disabled=true;if(i===ci)b.classList.add("correct");if(i===idx&&!ok)b.classList.add("wrong");});
+  state.answered.push({question:{question:'"'+q.pidgin+'" means...',realStory:{fact:q.meaning,date:"",source:"Nigerian Pidgin"}},correct:ok});
+  if(ok){handleCorrect();setTimeout(()=>advanceQuestion(),600);}
+  else handleWrong();
+}
+
+// ============================================================
+// END GAME + RESULTS
+// ============================================================
+
+function endGame(){
+  if(state.timerInterval){clearInterval(state.timerInterval);state.timerInterval=null;}
+  state.lastResult={score:state.score,correctAnswers:state.correct,answeredQuestions:state.answered,bestStreak:state.bestStreak,timeUsed:66-state.timeLeft,gameId:state.selectedGame};
+  profile.totalScore+=state.score;profile.gamesPlayed++;profile.totalCorrect+=state.correct;
+  profile.totalAnswered+=state.answered.length;profile.highScore=Math.max(profile.highScore,state.score);
+  profile.bestStreak=Math.max(profile.bestStreak,state.bestStreak);
+  if(state.selectedZone&&!profile.completedZones.includes(state.selectedZone)){profile.completedZones.push(state.selectedZone);state.completedZones=[...profile.completedZones];}
+  state.totalScore=profile.totalScore;state.gamesPlayed=profile.gamesPlayed;
+  checkAchievements();saveProfile(profile);go("game-result");
+}
+
+function renderGameResult(){
+  const r=state.lastResult;if(!r){go("landing");return;}
+  const acc=Math.round((r.correctAnswers/Math.max(r.answeredQuestions.length,1))*100);
+  const g=GAMES.find(x=>x.id===r.gameId)||GAMES[0];
+  let rating,re,rm;
+  if(r.score>=2000){rating="Legend";re="\u{1F451}";rm="Omo you sabi! Absolute legend status.";}
+  else if(r.score>=1000){rating="Sharp";re="\u{1F525}";rm="Sharp sharp! You know your Naija well.";}
+  else if(r.score>=400){rating="Rising";re="\u{1F4AA}";rm="Not bad! You dey learn am well well.";}
+  else{rating="Rookie";re="\u{1F331}";rm="Every champion starts somewhere. Go again!";}
+  app.innerHTML=`<div class="screen" style="align-items:center;text-align:center">
+    <div class="fade-up" style="width:80px;height:80px;margin-bottom:12px;border-radius:20px;overflow:hidden;box-shadow:0 0 24px rgba(244,169,0,.3)">${avatar(profile.displayName, 80)}</div>
+    <h1 class="display fade-up fade-up-d1" style="font-weight:700;font-size:48px;color:var(--gold);margin-bottom:4px">${r.score}</h1>
+    <div class="display fade-up fade-up-d1" style="font-weight:600;font-size:20px;color:var(--cream);margin-bottom:4px">${re} ${rating}</div>
+    <div class="fade-up fade-up-d1" style="color:rgba(255,248,240,.4);font-size:13px;margin-bottom:8px">${g.emoji} ${g.title}</div>
+    <p class="fade-up fade-up-d2" style="color:rgba(255,248,240,.6);font-size:16px;margin-bottom:32px;max-width:300px">${rm}</p>
+    <div class="fade-up fade-up-d2" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;width:100%;max-width:360px;margin-bottom:32px">
+      <div class="glass" style="padding:16px 12px"><div class="display" style="font-weight:700;font-size:24px;color:var(--green-light)">${r.correctAnswers}</div><div style="color:rgba(255,248,240,.4);font-size:11px;margin-top:4px">correct</div></div>
+      <div class="glass" style="padding:16px 12px"><div class="display" style="font-weight:700;font-size:24px;color:var(--gold)">${acc}%</div><div style="color:rgba(255,248,240,.4);font-size:11px;margin-top:4px">accuracy</div></div>
+      <div class="glass" style="padding:16px 12px"><div class="display" style="font-weight:700;font-size:24px;color:var(--coral)">${r.bestStreak}</div><div style="color:rgba(255,248,240,.4);font-size:11px;margin-top:4px">best streak</div></div>
+    </div>
+    <div class="fade-up fade-up-d3" style="display:flex;flex-direction:column;gap:12px;width:100%;max-width:360px">
+      ${r.answeredQuestions.some(a=>a.question.realStory&&a.question.realStory.fact)?'<button class="btn-gold" onclick="go(\'real-story\')">The Real Stories</button>':''}
+      <button class="btn-coral" onclick="go('pride-card')">Share Your Pride Card</button>
+      <div style="display:flex;gap:12px">
+        <button class="btn-outline" style="flex:1" onclick="startGame()">Play Again</button>
+        <button class="btn-outline" style="flex:1;color:rgba(255,248,240,.6)" onclick="go('game-select')">Other Games</button>
+      </div>
+      <button class="btn-outline" style="color:rgba(255,248,240,.4)" onclick="state.selectedZone=null;go('map-hub')">Back to Map</button>
+    </div>
+  </div>`;
+}
+
+// ============================================================
+// REAL STORY + PRIDE CARD
+// ============================================================
+
+function renderRealStory(){
+  const r=state.lastResult;if(!r){go("landing");return;}
+  const stories=r.answeredQuestions.filter(a=>a.question.realStory&&a.question.realStory.fact).slice(0,8).map((a,i)=>{
+    const s=a.question.realStory;
+    return`<div class="glass fade-up" style="padding:20px;animation-delay:${i*.08}s">
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px">
+        <span style="font-size:20px">${a.correct?'✅':'❌'}</span>
+        ${s.date?`<span style="color:rgba(255,248,240,.4);font-size:12px">${s.date}</span>`:''}
+      </div>
+      <p style="font-size:15px;line-height:1.6;margin-bottom:12px;color:rgba(255,248,240,.85)">${s.fact}</p>
+      ${s.source?`<div style="color:rgba(255,248,240,.3);font-size:12px">Source: ${s.source}</div>`:''}
+    </div>`;
+  }).join("");
+  app.innerHTML=`<div class="screen">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:24px">
+      <h1 class="display" style="font-weight:700;font-size:24px">The Real Stories</h1>
+      <button style="color:rgba(255,248,240,.4);font-size:14px" onclick="go('game-result')">Close</button>
+    </div>
+    <p style="color:rgba(255,248,240,.5);font-size:14px;margin-bottom:24px">Every question is powered by a real Nigerian achievement.</p>
+    <div style="display:flex;flex-direction:column;gap:16px">${stories}</div>
+  </div>`;
+}
+
+function renderPrideCard(){
+  const r=state.lastResult;if(!r){go("landing");return;}
+  const acc=Math.round((r.correctAnswers/Math.max(r.answeredQuestions.length,1))*100);
+  const name=profile.displayName||"Naija Champion";
+  const g=GAMES.find(x=>x.id===r.gameId)||GAMES[0];
+  const st=encodeURIComponent(`Omo see my score \u{1F62D}\u{1F1F3}\u{1F1EC} I scored ${r.score} on ${g.title} in Naija 66! ${r.correctAnswers} correct, ${r.bestStreak} best streak. Try beat am \u{1F449} naija66.ng #Naija66 #NigeriaAt66`);
+  app.innerHTML=`<div class="screen" style="align-items:center;padding-top:24px">
+    <div style="display:flex;align-items:center;justify-content:space-between;width:100%;max-width:360px;margin-bottom:24px">
+      <h1 class="display" style="font-weight:700;font-size:20px">Your Naija Pride Card</h1>
+      <button style="color:rgba(255,248,240,.4);font-size:14px" onclick="go('game-result')">Close</button>
+    </div>
+    <div class="pride-card fade-up">
+      <div style="position:relative;z-index:1;display:flex;flex-direction:column;height:100%;padding:32px">
+        <div style="display:flex;align-items:flex-start;justify-content:space-between">
+          <div><div class="display" style="font-weight:700;font-size:14px;color:var(--gold);letter-spacing:1.5px">NAIJA 66</div><div style="color:rgba(255,248,240,.4);font-size:12px;margin-top:4px">66th Independence Day</div></div>
+          <div style="font-size:30px">\u{1F1F3}\u{1F1EC}</div>
+        </div>
+        <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center">
+          <div style="color:rgba(255,248,240,.4);font-size:14px;margin-bottom:4px">I scored</div>
+          <div class="display" style="font-weight:700;font-size:80px;color:var(--gold);line-height:1">${r.score}</div>
+          <div style="color:rgba(255,248,240,.6);font-size:16px;margin-top:8px">${g.emoji} ${g.title}</div>
+        </div>
+        <div style="display:flex;align-items:flex-end;justify-content:space-between">
+          <div style="display:flex;align-items:center;gap:10px">
+            <div style="width:40px;height:40px;border-radius:12px;overflow:hidden;flex-shrink:0">${avatar(name, 40)}</div>
+            <div><div class="display" style="font-weight:600;font-size:18px">${name}</div>${state.stateOfOrigin?`<div style="color:rgba(255,248,240,.5);font-size:14px">${state.stateOfOrigin} State</div>`:''}</div>
+          </div>
+          <div style="text-align:right"><div style="color:rgba(255,248,240,.4);font-size:12px">${acc}% accuracy</div><div style="color:rgba(255,248,240,.4);font-size:12px">${r.bestStreak} best streak</div></div>
+        </div>
+        <div style="text-align:center;margin-top:16px;padding-top:16px;border-top:1px solid rgba(255,255,255,.1)">
+          <span class="display" style="font-weight:600;font-size:14px;color:var(--gold)">What's your 66?</span>
+          <span style="color:rgba(255,248,240,.3);font-size:12px;margin-left:8px">naija66.ng</span>
+        </div>
+      </div>
+    </div>
+    <div class="fade-up fade-up-d1" style="width:100%;max-width:360px;margin-top:24px;display:flex;flex-direction:column;gap:12px">
+      <a href="https://wa.me/?text=${st}" target="_blank" rel="noopener" style="display:block;width:100%;padding:16px;border-radius:16px;background:#25D366;color:white;font-weight:600;text-align:center;text-decoration:none;font-size:16px">Share on WhatsApp</a>
+      <div style="display:flex;gap:12px">
+        <a href="https://twitter.com/intent/tweet?text=${st}" target="_blank" rel="noopener" class="btn-outline" style="flex:1;text-align:center;text-decoration:none;color:var(--cream)">Share on X</a>
+        <button class="btn-outline" style="flex:1;color:rgba(255,248,240,.6)" onclick="copyShare()">Copy Link</button>
+      </div>
+    </div>
+    <div class="glass fade-up fade-up-d2" style="width:100%;max-width:360px;margin-top:20px;padding:24px">
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:16px">
+        <span style="font-size:20px">\u{1F3AF}</span>
+        <h2 class="display" style="font-weight:600;font-size:16px;color:var(--gold)">Get Your Personal Game</h2>
+      </div>
+      <p style="color:rgba(255,248,240,.5);font-size:13px;line-height:1.5;margin-bottom:16px">Drop your details and we'll build you a custom Naija 66 game with your own questions. No spam, we promise \u{1F91D}</p>
+      ${profile.leadCaptured ? `
+        <div style="text-align:center;padding:16px;border-radius:12px;background:rgba(17,168,122,.15);border:1px solid rgba(17,168,122,.3)">
+          <div style="font-size:24px;margin-bottom:8px">\u{2705}</div>
+          <div style="color:var(--green-light);font-weight:600;font-size:14px">You're on the list!</div>
+          <div style="color:rgba(255,248,240,.4);font-size:12px;margin-top:4px">We'll reach out on WhatsApp soon.</div>
+        </div>
+      ` : `
+        <div style="display:flex;flex-direction:column;gap:12px">
+          <input id="leadWhats" type="tel" placeholder="WhatsApp number (e.g. +234 801 234 5678)" style="width:100%;padding:14px 16px;border-radius:12px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);color:var(--cream);font-size:14px;outline:none" onfocus="this.style.borderColor='var(--gold)'" onblur="this.style.borderColor='rgba(255,255,255,.1)'" />
+          <input id="leadEmail" type="email" placeholder="Email (optional)" style="width:100%;padding:14px 16px;border-radius:12px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);color:var(--cream);font-size:14px;outline:none" onfocus="this.style.borderColor='var(--gold)'" onblur="this.style.borderColor='rgba(255,255,255,.1)'" />
+          <button class="btn-gold" style="font-size:15px;padding:14px 24px" onclick="submitLead()">Get My Personal Game \u{1F680}</button>
+        </div>
+      `}
+    </div>
+  </div>`;
+}
+
+function submitLead(){
+  const whats=document.getElementById("leadWhats");
+  const email=document.getElementById("leadEmail");
+  const whatsVal=whats?whats.value.trim():"";
+  const emailVal=email?email.value.trim():"";
+  
+  if(!whatsVal){
+    if(whats){whats.style.borderColor="var(--coral)";whats.placeholder="Enter your WhatsApp number first!";}
+    return;
+  }
+  
+  try{
+    const lead={
+      displayName:profile.displayName||"",
+      whatsapp:whatsVal,
+      email:emailVal,
+      stateOfOrigin:profile.stateOfOrigin||"",
+      ageTier:profile.ageTier||"",
+      totalScore:profile.totalScore||0,
+      gamesPlayed:profile.gamesPlayed||0,
+      highScore:profile.highScore||0,
+      bestStreak:profile.bestStreak||0,
+      capturedAt:Date.now(),
+      gameId:state.lastResult?state.lastResult.gameId:"",
+      lastScore:state.lastResult?state.lastResult.score:0
+    };
+    let leads=[];
+    try{leads=JSON.parse(localStorage.getItem("naija66_leads")||"[]");}catch(e){}
+    leads.push(lead);
+    localStorage.setItem("naija66_leads",JSON.stringify(leads));
+    profile.leadCaptured=true;
+    saveProfile(profile);
+  }catch(e){}
+  
+  render();
+}
+
+function copyShare(){
+  const r=state.lastResult,g=GAMES.find(x=>x.id===r.gameId)||GAMES[0];
+  const t=`Omo see my score \u{1F62D}\u{1F1F3}\u{1F1EC} I scored ${r.score} on ${g.title} in Naija 66! Try beat am \u{1F449} naija66.ng #Naija66 #NigeriaAt66`;
+  try{navigator.clipboard.writeText(t).then(()=>{const b=document.querySelector('[onclick="copyShare()"]');if(b){b.textContent="Copied!";setTimeout(()=>{b.textContent="Copy Link";},2000);}});}catch(e){}
+}
+
+// ============================================================
+// NAVIGATION
+// ============================================================
+
+function go(screen){state.screen=screen;render();window.scrollTo(0,0);}
+render();
+</script>
+
+</body></html>
