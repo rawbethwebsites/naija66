@@ -1,6 +1,4 @@
-<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
-<title>Naija 66</title>
-<meta name="theme-color" content="#064E3B">
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><title>Naija 66</title><meta name="theme-color" content="#064E3B"><link rel="stylesheet" href="assets/experience.css"><script src="assets/nigeria-geography.js"></script><script src="assets/experience.js"></script><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
 <style>
 @import url("https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap");
 
@@ -230,7 +228,7 @@ function L({l:q,c:J,h:Q}){let Y=Q*Math.PI/180,Z=J*Math.cos(Y),X=J*Math.sin(Y),$=
 
 // Helper: render a blobatar avatar at a given size
 function avatar(name, size) {
-  return blobatar(name || 'naija', { size, background: 'squircle' });
+  return blobatar(name || 'naija', { size, background: 'squircle' }).replace('<svg ', '<svg data-avatar="true" ');
 }
 
 // ============================================================
@@ -325,7 +323,7 @@ function gazeTick() {
 function setupGazeAfterRender() {
   // Clear previous targets since innerHTML was replaced
   gazeState.targets = [];
-  const svgs = document.querySelectorAll('#app svg');
+  const svgs = document.querySelectorAll('#app svg[data-avatar="true"]');
   for (const svg of svgs) {
     registerGaze(svg);
   }
@@ -696,8 +694,10 @@ function render() {
   const gameScreens=["game-play","game-play-quote","game-play-state","game-play-jollof","game-play-pidgin"];
   if(!gameScreens.includes(state.screen)&&state.timerInterval){clearInterval(state.timerInterval);state.timerInterval=null;}
   const fn={
-    "landing":renderLanding,"profile-setup":renderProfileSetup,"profile-view":renderProfileView,
-    "age-select":renderAgeSelect,"state-select":renderStateSelect,"map-hub":renderMapHub,
+    "landing":() => (window.NaijaExperience ? window.NaijaExperience.landing() : renderLanding()),
+    "profile-setup":renderProfileSetup,"profile-view":renderProfileView,
+    "age-select":renderAgeSelect,"state-select":renderStateSelect,
+    "map-hub":() => (window.NaijaExperience ? window.NaijaExperience.mapHub() : renderMapHub()),
     "game-select":renderGameSelect,"game-intro":renderGameIntro,
     "game-play":renderGamePlay,"game-play-quote":renderGamePlayQuote,
     "game-play-state":renderGamePlayState,"game-play-jollof":renderGamePlayJollof,
@@ -891,7 +891,8 @@ function clickZone(zone){state.selectedZone=zone;go("game-select");}
 // ============================================================
 
 function renderGameSelect() {
-  const zoneLabel=state.selectedZone.split("-").map(w=>w[0].toUpperCase()+w.slice(1)).join(" ");
+  const zone = state.selectedZone || profile.zone || "south-west";
+  const zoneLabel = zone.split("-").map(w=>w[0].toUpperCase()+w.slice(1)).join(" ");
   const tiles=GAMES.map((g,i)=>`
     <button class="game-tile fade-up" style="animation-delay:${i*.08}s" onclick="selectGame('${g.id}')">
       <div style="display:flex;align-items:center;gap:12px;margin-bottom:8px">
@@ -1250,7 +1251,9 @@ function renderPrideCard(){
   const acc=Math.round((r.correctAnswers/Math.max(r.answeredQuestions.length,1))*100);
   const name=profile.displayName||"Naija Champion";
   const g=GAMES.find(x=>x.id===r.gameId)||GAMES[0];
-  const st=encodeURIComponent(`Omo see my score \u{1F62D}\u{1F1F3}\u{1F1EC} I scored ${r.score} on ${g.title} in Naija 66! ${r.correctAnswers} correct, ${r.bestStreak} best streak. Try beat am \u{1F449} naija66.ng #Naija66 #NigeriaAt66`);
+  const shareDomain = (typeof window !== "undefined" && window.location.host) || "naija66.theboostnation.space";
+  const shareUrl = (typeof window !== "undefined" && window.location.origin) || ("https://" + shareDomain);
+  const st=encodeURIComponent(`Omo see my score \u{1F62D}\u{1F1F3}\u{1F1EC} I scored ${r.score} on ${g.title} in Naija 66! ${r.correctAnswers} correct, ${r.bestStreak} best streak. Try beat am \u{1F449} ${shareUrl} #Naija66 #NigeriaAt66`);
   app.innerHTML=`<div class="screen" style="align-items:center;padding-top:24px">
     <div style="display:flex;align-items:center;justify-content:space-between;width:100%;max-width:360px;margin-bottom:24px">
       <h1 class="display" style="font-weight:700;font-size:20px">Your Naija Pride Card</h1>
@@ -1276,7 +1279,7 @@ function renderPrideCard(){
         </div>
         <div style="text-align:center;margin-top:16px;padding-top:16px;border-top:1px solid rgba(255,255,255,.1)">
           <span class="display" style="font-weight:600;font-size:14px;color:var(--gold)">What's your 66?</span>
-          <span style="color:rgba(255,248,240,.3);font-size:12px;margin-left:8px">naija66.ng</span>
+          <span style="color:rgba(255,248,240,.3);font-size:12px;margin-left:8px">${shareDomain}</span>
         </div>
       </div>
     </div>
@@ -1362,7 +1365,8 @@ function submitLead(){
 
 function copyShare(){
   const r=state.lastResult,g=GAMES.find(x=>x.id===r.gameId)||GAMES[0];
-  const t=`Omo see my score \u{1F62D}\u{1F1F3}\u{1F1EC} I scored ${r.score} on ${g.title} in Naija 66! Try beat am \u{1F449} naija66.ng #Naija66 #NigeriaAt66`;
+  const shareUrl = (typeof window !== "undefined" && window.location.origin) || "https://naija66.theboostnation.space";
+  const t=`Omo see my score \u{1F62D}\u{1F1F3}\u{1F1EC} I scored ${r.score} on ${g.title} in Naija 66! Try beat am \u{1F449} ${shareUrl} #Naija66 #NigeriaAt66`;
   try{navigator.clipboard.writeText(t).then(()=>{const b=document.querySelector('[onclick="copyShare()"]');if(b){b.textContent="Copied!";setTimeout(()=>{b.textContent="Copy Link";},2000);}});}catch(e){}
 }
 

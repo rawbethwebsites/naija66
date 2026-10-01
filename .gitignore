@@ -35,3 +35,8 @@ next-env.d.ts
 # convex
 .convex/
 .env*
+
+# demo and video generator
+demo/
+*.mp4
+*.wav

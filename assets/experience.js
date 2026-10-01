@@ -2,7 +2,7 @@
 window.NaijaExperience = (() => {
   'use strict';
   const escape = (value) => String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-  const zoneLabel = (id) => id.split('-').map(s => s[0].toUpperCase() + s.slice(1)).join('-');
+  const zoneLabel = (id) => String(id || '').split('-').filter(Boolean).map(s => s[0].toUpperCase() + s.slice(1)).join('-');
   const paths = {
     arrow: '<path d="M4 12h15m-6-6 6 6-6 6"/>',
     back: '<path d="M20 12H5m6-6-6 6 6 6"/>',
